@@ -4,902 +4,180 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover" />
   <title>O.M.Ocreation - Luxury Stone Fashion | Rhinestones & Beads Abeokuta</title>
-  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #ffffff;
-      overflow-x: hidden;
-    }
-    
-    :root {
-      --pink: #ff4da6;
-      --pink-dark: #e6398c;
-      --pink-light: #ffb3d9;
-      --pink-soft: #fff0f6;
-      --dark: #1a1a2e;
-      --gray: #666;
-    }
-    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: #fff; overflow-x: hidden; }
+    :root { --pink: #ff4da6; --pink-dark: #e6398c; --pink-light: #ffb3d9; --pink-soft: #fff0f6; --dark: #1a1a2e; --gray: #666; }
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: var(--pink-soft); }
     ::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 10px; }
     
-    /* Floating Particles */
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
+    /* Floating particles */
+    .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+    .particle { position: absolute; background: radial-gradient(circle, var(--pink-light), transparent); border-radius: 50%; opacity: 0.3; animation: float 20s infinite ease-in-out; }
+    @keyframes float { 0%,100% { transform: translateY(0) translateX(0); } 25% { transform: translateY(-50px) translateX(30px); } 50% { transform: translateY(30px) translateX(-20px); } 75% { transform: translateY(-30px) translateX(40px); } }
     
-    .particle {
-      position: absolute;
-      background: radial-gradient(circle, var(--pink-light), transparent);
-      border-radius: 50%;
-      opacity: 0.3;
-      animation: float 20s infinite ease-in-out;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0) translateX(0); }
-      25% { transform: translateY(-50px) translateX(30px); }
-      50% { transform: translateY(30px) translateX(-20px); }
-      75% { transform: translateY(-30px) translateX(40px); }
-    }
-    
-    /* NAVIGATION */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      padding: 12px 5%;
-      transition: 0.3s;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-    }
-    
-    .navbar.scrolled {
-      padding: 8px 5%;
-      background: rgba(255,255,255,0.98);
-      box-shadow: 0 5px 25px rgba(0,0,0,0.1);
-    }
-    
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      flex-shrink: 0;
-    }
-    
-    .logo img {
-      height: 50px;
-      width: auto;
-      max-width: 180px;
-      object-fit: contain;
-    }
-    
-    .logo span {
-      font-size: 1.3rem;
-      font-weight: 800;
-    }
-    
+    /* Navigation */
+    .navbar { position: fixed; top: 0; left: 0; width: 100%; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); z-index: 1000; padding: 12px 5%; transition: 0.3s; box-shadow: 0 2px 20px rgba(0,0,0,0.05); }
+    .navbar.scrolled { padding: 8px 5%; background: rgba(255,255,255,0.98); box-shadow: 0 5px 25px rgba(0,0,0,0.1); }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0; }
+    .logo img { height: 50px; width: auto; max-width: 180px; object-fit: contain; }
+    .logo span { font-size: 1.3rem; font-weight: 800; }
     .logo span:first-child { color: var(--dark); }
     .logo span:last-child { color: var(--pink); }
-    
-    .nav-menu {
-      display: flex;
-      gap: 25px;
-      list-style: none;
-    }
-    
-    .nav-link {
-      text-decoration: none;
-      color: var(--dark);
-      font-weight: 500;
-      transition: 0.3s;
-      font-size: 0.95rem;
-      position: relative;
-    }
-    
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--pink);
-      transition: 0.3s;
-    }
-    
+    .nav-menu { display: flex; gap: 25px; list-style: none; }
+    .nav-link { text-decoration: none; color: var(--dark); font-weight: 500; transition: 0.3s; font-size: 0.95rem; position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--pink); transition: 0.3s; }
     .nav-link:hover::after { width: 100%; }
     .nav-link:hover { color: var(--pink); }
-    
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      z-index: 1002;
-    }
-    
-    .hamburger span {
-      width: 25px;
-      height: 2.5px;
-      background: var(--dark);
-      transition: 0.3s;
-      border-radius: 2px;
-    }
-    
-    /* Mobile Menu */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1002; }
+    .hamburger span { width: 25px; height: 2.5px; background: var(--dark); transition: 0.3s; border-radius: 2px; }
     @media (max-width: 768px) {
       .hamburger { display: flex; }
-      
-      .nav-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 75%;
-        max-width: 280px;
-        height: 100vh;
-        background: linear-gradient(135deg, #1a1a2e, #2d2d4a);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 30px;
-        transition: 0.4s ease-in-out;
-        z-index: 1001;
-        box-shadow: -5px 0 30px rgba(0,0,0,0.3);
-      }
-      
+      .nav-menu { position: fixed; top: 0; right: -100%; width: 75%; max-width: 280px; height: 100vh; background: linear-gradient(135deg, #1a1a2e, #2d2d4a); flex-direction: column; align-items: center; justify-content: center; gap: 30px; transition: 0.4s ease-in-out; z-index: 1001; box-shadow: -5px 0 30px rgba(0,0,0,0.3); }
       .nav-menu.active { right: 0; }
-      
-      .nav-menu .nav-link {
-        color: white;
-        font-size: 1.1rem;
-      }
-      
-      .close-btn {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 28px;
-        color: white;
-        cursor: pointer;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.1);
-        transition: 0.3s;
-      }
-      
-      .close-btn:hover {
-        background: var(--pink);
-        transform: rotate(90deg);
-      }
-      
-      .hamburger.active {
-        opacity: 0;
-        visibility: hidden;
-      }
+      .nav-menu .nav-link { color: white; font-size: 1.1rem; }
+      .close-btn { position: absolute; top: 20px; right: 20px; font-size: 28px; color: white; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.1); transition: 0.3s; }
+      .close-btn:hover { background: var(--pink); transform: rotate(90deg); }
+      .hamburger.active { opacity: 0; visibility: hidden; }
     }
     
-    /* HERO SLIDER */
-    .hero {
-      height: 100vh;
-      position: relative;
-      overflow: hidden;
-      margin-top: 0;
-    }
+    /* Hero Slider */
+    .hero { height: 100vh; position: relative; overflow: hidden; }
+    .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0; transition: opacity 0.8s ease-in-out; z-index: 1; }
+    .slide.active { opacity: 1; z-index: 2; }
+    .slide-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)); }
+    .slide-content { position: absolute; bottom: 20%; left: 8%; right: 8%; z-index: 3; color: white; max-width: 500px; }
+    .slide-content h1 { font-size: 2.5rem; font-family: 'Playfair Display', serif; margin-bottom: 15px; }
+    .slide-content p { font-size: 1rem; margin-bottom: 25px; line-height: 1.5; }
+    .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: 0.3s; color: white; font-size: 1rem; }
+    .slider-btn:hover { background: var(--pink); }
+    .slider-prev { left: 15px; }
+    .slider-next { right: 15px; }
+    .slider-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: 0.3s; }
+    .dot.active { background: var(--pink); width: 20px; border-radius: 10px; }
     
-    .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      z-index: 1;
-    }
+    /* Divider Image */
+    .divider-section { padding: 60px 5%; text-align: center; background: linear-gradient(135deg, var(--pink-soft), white); }
+    .divider-image { max-width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); transition: 0.4s; }
+    .divider-image:hover { transform: scale(1.02); box-shadow: 0 25px 50px rgba(255,77,166,0.2); }
     
-    .slide.active {
-      opacity: 1;
-      z-index: 2;
-    }
-
-    .slide-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      transform: scale(1);
-      transition: transform 6s ease-in-out;
-    }
-
-    .slide.active .slide-bg {
-      transform: scale(1.1);
-    }
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 24px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
+    .btn-primary { background: var(--pink); color: white; box-shadow: 0 4px 15px rgba(255,77,166,0.3); }
+    .btn-primary:hover { transform: translateY(-2px); background: var(--pink-dark); box-shadow: 0 8px 25px rgba(255,77,166,0.4); }
+    .btn-outline { border: 2px solid white; color: white; background: transparent; }
+    .btn-outline:hover { background: white; color: var(--pink); transform: translateY(-2px); }
     
-    .slide-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
-    }
-    
-    .slide-content {
-      position: absolute;
-      bottom: 25%;
-      left: 8%;
-      right: 8%;
-      z-index: 3;
-      color: white;
-      max-width: 600px;
-    }
-    
-    .slide-content h1 {
-      font-size: 3.5rem;
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 15px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-    
-    .slide-content p {
-      font-size: 1.1rem;
-      margin-bottom: 30px;
-      line-height: 1.6;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-
-    .slide-content .btn {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-
-    .slide.active .slide-content h1 {
-      opacity: 1;
-      transform: translateY(0);
-      transition-delay: 0.3s;
-    }
-
-    .slide.active .slide-content p {
-      opacity: 1;
-      transform: translateY(0);
-      transition-delay: 0.5s;
-    }
-
-    .slide.active .slide-content .btn {
-      opacity: 1;
-      transform: translateY(0);
-      transition-delay: 0.7s;
-    }
-    
-    .slider-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 45px;
-      height: 45px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-      transition: 0.3s;
-      color: white;
-      font-size: 1.2rem;
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-    
-    .slider-btn:hover { 
-      background: var(--pink); 
-      transform: translateY(-50%) scale(1.1);
-      border-color: var(--pink);
-    }
-    .slider-prev { left: 20px; }
-    .slider-next { right: 20px; }
-    
-    .slider-dots {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 12px;
-      z-index: 10;
-    }
-    
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.4);
-      cursor: pointer;
-      transition: all 0.4s ease;
-    }
-    
-    .dot.active {
-      background: var(--pink);
-      transform: scale(1.2);
-    }
-
-    .scroll-indicator {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      opacity: 0.8;
-      animation: bounce 2s infinite;
-      text-decoration: none;
-    }
-
-    .scroll-indicator span {
-      font-size: 0.75rem;
-      letter-spacing: 2px;
-      margin-bottom: 5px;
-      text-transform: uppercase;
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-      40% { transform: translateY(-15px) translateX(-50%); }
-      60% { transform: translateY(-7px) translateX(-50%); }
-    }
-    
-    /* DIVIDER IMAGE */
-    .divider-section {
-      padding: 60px 5%;
-      text-align: center;
-      background: linear-gradient(135deg, var(--pink-soft), white);
-    }
-    
-    .divider-image {
-      max-width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-      transition: 0.4s;
-    }
-    
-    .divider-image:hover {
-      transform: scale(1.02);
-      box-shadow: 0 25px 50px rgba(255,77,166,0.2);
-    }
-    
-    /* BUTTONS */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 28px;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.3s;
-      font-size: 0.95rem;
-    }
-    
-    .btn-primary {
-      background: var(--pink);
-      color: white;
-      box-shadow: 0 4px 15px rgba(255,77,166,0.3);
-    }
-    
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      background: var(--pink-dark);
-      box-shadow: 0 8px 25px rgba(255,77,166,0.4);
-    }
-    
-    .btn-outline {
-      border: 2px solid white;
-      color: white;
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(5px);
-    }
-    
-    .btn-outline:hover {
-      background: white;
-      color: var(--dark);
-      transform: translateY(-3px);
-    }
-    
-    /* SECTIONS */
-    .section {
-      padding: 60px 5%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .section-title {
-      text-align: center;
-      font-size: 2rem;
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 15px;
-    }
-    
+    /* Sections */
+    .section { padding: 60px 5%; max-width: 1200px; margin: 0 auto; }
+    .section-title { text-align: center; font-size: 2rem; font-family: 'Playfair Display', serif; margin-bottom: 15px; }
     .section-title span { color: var(--pink); }
+    .section-title::after { content: ''; display: block; width: 50px; height: 3px; background: linear-gradient(90deg, var(--pink), var(--pink-light)); margin: 12px auto 0; border-radius: 3px; }
+    .section-subtitle { text-align: center; color: var(--gray); max-width: 600px; margin: 15px auto 40px; font-size: 0.95rem; }
     
-    .section-title::after {
-      content: '';
-      display: block;
-      width: 50px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--pink), var(--pink-light));
-      margin: 12px auto 0;
-      border-radius: 3px;
-    }
-    
-    .section-subtitle {
-      text-align: center;
-      color: var(--gray);
-      max-width: 600px;
-      margin: 15px auto 40px;
-      font-size: 0.95rem;
-    }
-    
-    /* ABOUT */
-    .about-grid {
-      display: flex;
-      gap: 40px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    
+    /* About */
+    .about-grid { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; }
     .about-text { flex: 1; }
-    .about-text p {
-      color: var(--gray);
-      margin-bottom: 15px;
-      line-height: 1.7;
-      font-size: 0.9rem;
-    }
-    
-    .about-image {
-      flex: 1;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-      transition: 0.4s;
-    }
-    
-    .about-image:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 25px 50px rgba(255,77,166,0.15);
-    }
-    
-    .about-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: 0.4s;
-    }
-    
+    .about-text p { color: var(--gray); margin-bottom: 15px; line-height: 1.7; font-size: 0.9rem; }
+    .about-image { flex: 1; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); transition: 0.4s; }
+    .about-image:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(255,77,166,0.15); }
+    .about-image img { width: 100%; height: auto; display: block; transition: 0.4s; }
     .about-image:hover img { transform: scale(1.03); }
     
-    /* SERVICES */
+    /* Services */
     .services { background: var(--pink-soft); }
-    .services-grid {
-      display: flex;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
-    
-    .service-card {
-      background: white;
-      padding: 35px 25px;
-      text-align: center;
-      border-radius: 20px;
-      flex: 1;
-      min-width: 200px;
-      transition: 0.4s;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,77,166,0.1), transparent);
-      transition: 0.5s;
-    }
-    
+    .services-grid { display: flex; gap: 25px; flex-wrap: wrap; }
+    .service-card { background: white; padding: 35px 25px; text-align: center; border-radius: 20px; flex: 1; min-width: 200px; transition: 0.4s; cursor: pointer; position: relative; overflow: hidden; }
+    .service-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,77,166,0.1), transparent); transition: 0.5s; }
     .service-card:hover::before { left: 100%; }
-    .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(255,77,166,0.2);
-    }
-    
+    .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(255,77,166,0.2); }
     .service-icon { font-size: 2.8rem; margin-bottom: 15px; }
     .service-card h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--pink); }
     .service-card p { font-size: 0.85rem; color: var(--gray); }
     
-    /* GALLERY */
-    .gallery-grid {
-      display: flex;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
-    
-    .gallery-item {
-      flex: 1;
-      min-width: 260px;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-      transition: 0.4s;
-      background: white;
-    }
-    
-    .gallery-item:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 45px rgba(255,77,166,0.15);
-    }
-    
-    .gallery-item img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      transition: 0.5s;
-    }
-    
+    /* Gallery */
+    .gallery-grid { display: flex; gap: 25px; flex-wrap: wrap; }
+    .gallery-item { flex: 1; min-width: 260px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.08); transition: 0.4s; background: white; }
+    .gallery-item:hover { transform: translateY(-8px); box-shadow: 0 25px 45px rgba(255,77,166,0.15); }
+    .gallery-item img { width: 100%; height: 250px; object-fit: cover; transition: 0.5s; }
     .gallery-item:hover img { transform: scale(1.05); }
-    
-    .gallery-info {
-      padding: 15px;
-      text-align: center;
-    }
-    
+    .gallery-info { padding: 15px; text-align: center; }
     .gallery-info h3 { font-size: 1rem; color: var(--pink); margin-bottom: 5px; }
     .gallery-info p { font-size: 0.8rem; color: var(--gray); }
     
-    /* CONTACT */
-    .contact-section {
-      background: linear-gradient(135deg, var(--pink-soft), white);
-      border-radius: 30px;
-      margin: 0 5% 50px;
-      padding: 50px;
-    }
-    
-    .contact-grid {
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-    
+    /* Contact */
+    .contact-section { background: linear-gradient(135deg, var(--pink-soft), white); border-radius: 30px; margin: 0 5% 50px; padding: 50px; }
+    .contact-grid { display: flex; gap: 40px; flex-wrap: wrap; }
     .contact-info { flex: 1; }
     .map-container { flex: 1; }
-    
-    .info-card {
-      display: flex;
-      gap: 15px;
-      padding: 18px;
-      background: white;
-      border-radius: 15px;
-      margin-bottom: 15px;
-      transition: 0.3s;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-    
-    .info-card:hover {
-      background: var(--pink-soft);
-      transform: translateX(8px);
-      box-shadow: 0 10px 25px rgba(255,77,166,0.1);
-    }
-    
-    .info-icon {
-      width: 45px;
-      height: 45px;
-      background: var(--pink);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-    
+    .info-card { display: flex; gap: 15px; padding: 18px; background: white; border-radius: 15px; margin-bottom: 15px; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    .info-card:hover { background: var(--pink-soft); transform: translateX(8px); box-shadow: 0 10px 25px rgba(255,77,166,0.1); }
+    .info-icon { width: 45px; height: 45px; background: var(--pink); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; flex-shrink: 0; }
     .info-content h4 { font-size: 1rem; margin-bottom: 5px; }
-    .info-content p, .info-content a {
-      font-size: 0.85rem;
-      color: var(--gray);
-      text-decoration: none;
-    }
+    .info-content p, .info-content a { font-size: 0.85rem; color: var(--gray); text-decoration: none; }
     .info-content a:hover { color: var(--pink); }
+    .map-container iframe { width: 100%; height: 350px; border-radius: 15px; border: 0; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
     
-    .map-container iframe {
-      width: 100%;
-      height: 350px;
-      border-radius: 15px;
-      border: 0;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-    
-    /* SOCIAL - 2x2 GRID */
-    .social-section {
-      margin-top: 50px;
-      text-align: center;
-    }
-    
-    .social-title {
-      font-size: 1.6rem;
-      margin-bottom: 30px;
-      color: var(--dark);
-    }
-    
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    
-    .social-card {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 20px;
-      border-radius: 60px;
-      text-decoration: none;
-      transition: 0.3s;
-      color: white;
-    }
-    
-    .social-card:hover {
-      transform: translateY(-3px) scale(1.02);
-    }
-    
+    /* Social 2x2 */
+    .social-section { margin-top: 50px; text-align: center; }
+    .social-title { font-size: 1.6rem; margin-bottom: 30px; color: var(--dark); }
+    .social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 600px; margin: 0 auto; }
+    .social-card { display: flex; align-items: center; gap: 12px; padding: 14px 20px; border-radius: 60px; text-decoration: none; transition: 0.3s; color: white; }
+    .social-card:hover { transform: translateY(-3px) scale(1.02); }
     .social-card.instagram { background: linear-gradient(135deg, #833AB4, #E1306C, #F77737); }
     .social-card.facebook { background: linear-gradient(135deg, #1877F2, #0C63D4); }
     .social-card.tiktok { background: linear-gradient(135deg, #000, #25F4EE, #FE2C55); }
     .social-card.whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); }
     .social-card.email { background: linear-gradient(135deg, #EA4335, #C5221F); }
-    
-    .social-icon {
-      width: 38px;
-      height: 38px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-    }
-    
-    .social-info {
-      flex: 1;
-      text-align: left;
-    }
-    
+    .social-icon { width: 38px; height: 38px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .social-info { flex: 1; text-align: left; }
     .social-info h4 { font-size: 0.9rem; margin-bottom: 2px; }
     .social-info p { font-size: 0.7rem; opacity: 0.8; }
     
-    /* NEWSLETTER */
-    .newsletter {
-      background: linear-gradient(135deg, var(--pink), var(--pink-dark));
-      padding: 45px 35px;
-      border-radius: 25px;
-      text-align: center;
-      color: white;
-      margin: 0 5% 50px;
-    }
-    
+    /* Newsletter */
+    .newsletter { background: linear-gradient(135deg, var(--pink), var(--pink-dark)); padding: 45px 35px; border-radius: 25px; text-align: center; color: white; margin: 0 5% 50px; }
     .newsletter h3 { font-size: 1.5rem; margin-bottom: 10px; }
     .newsletter p { font-size: 0.9rem; margin-bottom: 25px; opacity: 0.9; }
+    .newsletter-form { display: flex; gap: 12px; max-width: 450px; margin: 0 auto; flex-wrap: wrap; }
+    .newsletter-form input { flex: 1; padding: 12px 20px; border: none; border-radius: 50px; font-size: 0.9rem; outline: none; }
+    .newsletter-form button { padding: 12px 28px; background: var(--dark); color: white; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+    .newsletter-form button:hover { background: #2b2b3b; transform: translateY(-2px); }
     
-    .newsletter-form {
-      display: flex;
-      gap: 12px;
-      max-width: 450px;
-      margin: 0 auto;
-      flex-wrap: wrap;
-    }
-    
-    .newsletter-form input {
-      flex: 1;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      outline: none;
-    }
-    
-    .newsletter-form button {
-      padding: 12px 28px;
-      background: var(--dark);
-      color: white;
-      border: none;
-      border-radius: 50px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    
-    .newsletter-form button:hover {
-      background: #2b2b3b;
-      transform: translateY(-2px);
-    }
-    
-    /* FOOTER */
-    .footer {
-      background: var(--dark);
-      color: white;
-      padding: 50px 5% 25px;
-    }
-    
-    .footer-grid {
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
+    /* Footer */
+    .footer { background: var(--dark); color: white; padding: 50px 5% 25px; }
+    .footer-grid { display: flex; gap: 40px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; }
     .footer-col { flex: 1; min-width: 180px; }
     .footer-logo { font-size: 1.3rem; font-weight: 800; margin-bottom: 15px; }
     .footer-logo span { color: var(--pink); }
     .footer-col p { font-size: 0.8rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
     .footer-col h4 { font-size: 1rem; margin-bottom: 18px; position: relative; }
-    .footer-col h4::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 30px;
-      height: 2px;
-      background: var(--pink);
-    }
+    .footer-col h4::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 30px; height: 2px; background: var(--pink); }
     .footer-col ul { list-style: none; }
     .footer-col ul li { margin-bottom: 10px; }
-    .footer-col ul li a {
-      color: rgba(255,255,255,0.7);
-      text-decoration: none;
-      font-size: 0.8rem;
-      transition: 0.3s;
-    }
+    .footer-col ul li a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.8rem; transition: 0.3s; }
     .footer-col ul li a:hover { color: var(--pink); padding-left: 5px; }
+    .footer-social { display: flex; gap: 12px; margin-top: 18px; }
+    .footer-social a { width: 35px; height: 35px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: 0.3s; }
+    .footer-social a:hover { background: var(--pink); transform: translateY(-3px); }
+    .footer-bottom { text-align: center; padding-top: 30px; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.75rem; color: rgba(255,255,255,0.5); }
     
-    .footer-social {
-      display: flex;
-      gap: 12px;
-      margin-top: 18px;
-    }
-    .footer-social a {
-      width: 35px;
-      height: 35px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      transition: 0.3s;
-    }
-    .footer-social a:hover {
-      background: var(--pink);
-      transform: translateY(-3px);
-    }
-    
-    .footer-bottom {
-      text-align: center;
-      padding-top: 30px;
-      margin-top: 30px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.5);
-    }
-    
-    /* FLOATING BUTTONS */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      width: 55px;
-      height: 55px;
-      background: #25D366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.8rem;
-      text-decoration: none;
-      box-shadow: 0 5px 20px rgba(37,211,102,0.4);
-      transition: 0.3s;
-      z-index: 999;
-      animation: pulse 2s infinite;
-    }
-    
+    /* Floating buttons */
+    .whatsapp-float { position: fixed; bottom: 25px; right: 25px; width: 55px; height: 55px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem; text-decoration: none; box-shadow: 0 5px 20px rgba(37,211,102,0.4); transition: 0.3s; z-index: 999; animation: pulse 2s infinite; }
     .whatsapp-float:hover { transform: scale(1.08); }
-    
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.4); }
-      70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); }
-      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
-    }
-    
-    .back-to-top {
-      position: fixed;
-      bottom: 25px;
-      left: 25px;
-      width: 45px;
-      height: 45px;
-      background: var(--pink);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-decoration: none;
-      opacity: 0;
-      visibility: hidden;
-      transition: 0.3s;
-      z-index: 999;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    }
-    
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.4); } 70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
+    .back-to-top { position: fixed; bottom: 25px; left: 25px; width: 45px; height: 45px; background: var(--pink); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; opacity: 0; visibility: hidden; transition: 0.3s; z-index: 999; box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
     .back-to-top.show { opacity: 1; visibility: visible; }
-    .back-to-top:hover {
-      background: var(--pink-dark);
-      transform: translateY(-3px);
-    }
+    .back-to-top:hover { background: var(--pink-dark); transform: translateY(-3px); }
     
     @media (max-width: 768px) {
-      .slide-content h1 { font-size: 2rem; }
-      .slide-content p { font-size: 0.95rem; }
-      .slide-content { bottom: 20%; left: 5%; right: 5%; }
+      .slide-content h1 { font-size: 1.6rem; }
+      .slide-content p { font-size: 0.85rem; }
+      .slide-content { bottom: 15%; left: 5%; right: 5%; }
       .section { padding: 40px 20px; }
       .section-title { font-size: 1.6rem; }
       .about-grid, .contact-grid { flex-direction: column; }
@@ -915,14 +193,10 @@
       .divider-section { padding: 40px 20px; }
       .logo img { height: 40px; }
     }
-    
     @media (max-width: 480px) {
       .logo img { height: 35px; }
       .logo span { font-size: 1rem; }
-      .slider-btn { width: 35px; height: 35px; font-size: 0.9rem; }
-      .social-card { padding: 10px 15px; }
-      .social-icon { width: 32px; height: 32px; font-size: 0.9rem; }
-      .social-info h4 { font-size: 0.8rem; }
+      .slider-btn { width: 32px; height: 32px; font-size: 0.8rem; }
     }
   </style>
 </head>
@@ -933,16 +207,12 @@
 <nav class="navbar" id="navbar">
   <div class="nav-container">
     <a href="#" class="logo">
-      <img src="assets/log1" alt="O.M.Ocreation Logo" id="logoImg">
+      <img src="/assets/log1.jpg" alt="O.M.Ocreation Logo" id="logoImg">
       <span>O.M.O</span><span>creation</span>
     </a>
-    
     <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </div>
-    
     <ul class="nav-menu" id="navMenu">
       <span class="close-btn" id="closeMenu">✕</span>
       <li><a href="#home" class="nav-link">Home</a></li>
@@ -957,79 +227,24 @@
 </nav>
 
 <section class="hero" id="home">
-  <div class="slide active">
-    <div class="slide-bg" style="background-image: url('assets/p1');"></div>
-    <div class="slide-overlay"></div>
-    <div class="slide-content">
-      <h1>Luxury Stone Fashion</h1>
-      <p>Where elegance meets craftsmanship in every detail.</p>
-      <a href="#gallery" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Shop Now</a>
-    </div>
-  </div>
-  <div class="slide">
-    <div class="slide-bg" style="background-image: url('assets/p2');"></div>
-    <div class="slide-overlay"></div>
-    <div class="slide-content">
-      <h1>Original Rhinestones</h1>
-      <p>Premium quality rhinestones for all your fashion needs in Abeokuta.</p>
-      <a href="https://wa.me/2348077340294" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Order Now</a>
-    </div>
-  </div>
-  <div class="slide">
-    <div class="slide-bg" style="background-image: url('assets/p3');"></div>
-    <div class="slide-overlay"></div>
-    <div class="slide-content">
-      <h1>Beads & Bridal Materials</h1>
-      <p>Complete collection of beads, bridal stones, and fashion accessories.</p>
-      <a href="#contact" class="btn btn-primary"><i class="fas fa-phone"></i> Contact Us</a>
-    </div>
-  </div>
-  <div class="slide">
-    <div class="slide-bg" style="background-image: url('assets/p4');"></div>
-    <div class="slide-overlay"></div>
-    <div class="slide-content">
-      <h1>Paperstones</h1>
-      <p>High-quality paperstones for unique fashion designs.</p>
-      <a href="https://wa.me/2348077340294" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Inquire Now</a>
-    </div>
-  </div>
-  <div class="slide">
-    <div class="slide-bg" style="background-image: url('assets/p5');"></div>
-    <div class="slide-overlay"></div>
-    <div class="slide-content">
-      <h1>Training Available</h1>
-      <p>Learn how to make professional paperstones in Abeokuta.</p>
-      <a href="#contact" class="btn btn-primary"><i class="fas fa-graduation-cap"></i> Enroll Now</a>
-    </div>
-  </div>
-  <div class="slide">
-    <div class="slide-bg" style="background-image: url('assets/p6');"></div>
-    <div class="slide-overlay"></div>
-    <div class="slide-content">
-      <h1>O.M.Ocreation</h1>
-      <p>Your trusted source for rhinestones, beads, and bridal materials in Ogun State.</p>
-      <a href="#contact" class="btn btn-outline"><i class="fas fa-map-marker-alt"></i> Visit Us</a>
-    </div>
-  </div>
-  
+  <div class="slide active" style="background-image: url('/assets/p1.jpg');"><div class="slide-overlay"></div><div class="slide-content"><h1>Luxury Stone Fashion</h1><p>Where elegance meets craftsmanship in every detail.</p><a href="#gallery" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Shop Now</a></div></div>
+  <div class="slide" style="background-image: url('/assets/p2.jpg');"><div class="slide-overlay"></div><div class="slide-content"><h1>Original Rhinestones</h1><p>Premium quality rhinestones for all your fashion needs in Abeokuta.</p><a href="https://wa.me/2348077340294" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Order Now</a></div></div>
+  <div class="slide" style="background-image: url('/assets/p3.jpg');"><div class="slide-overlay"></div><div class="slide-content"><h1>Beads & Bridal Materials</h1><p>Complete collection of beads, bridal stones, and fashion accessories.</p><a href="#contact" class="btn btn-primary"><i class="fas fa-phone"></i> Contact Us</a></div></div>
+  <div class="slide" style="background-image: url('/assets/p4.jpg');"><div class="slide-overlay"></div><div class="slide-content"><h1>Paperstones</h1><p>High-quality paperstones for unique fashion designs.</p><a href="https://wa.me/2348077340294" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Inquire Now</a></div></div>
+  <div class="slide" style="background-image: url('/assets/p5.jpg');"><div class="slide-overlay"></div><div class="slide-content"><h1>Training Available</h1><p>Learn how to make professional paperstones in Abeokuta.</p><a href="#contact" class="btn btn-primary"><i class="fas fa-graduation-cap"></i> Enroll Now</a></div></div>
+  <div class="slide" style="background-image: url('/assets/p6.jpg');"><div class="slide-overlay"></div><div class="slide-content"><h1>O.M.Ocreation</h1><p>Your trusted source for rhinestones, beads, and bridal materials in Ogun State.</p><a href="#contact" class="btn btn-outline"><i class="fas fa-map-marker-alt"></i> Visit Us</a></div></div>
   <div class="slider-btn slider-prev" id="prevSlide"><i class="fas fa-chevron-left"></i></div>
   <div class="slider-btn slider-next" id="nextSlide"><i class="fas fa-chevron-right"></i></div>
   <div class="slider-dots" id="sliderDots"></div>
-
-  <a href="#about" class="scroll-indicator">
-    <span>Scroll</span>
-    <i class="fas fa-chevron-down"></i>
-  </a>
 </section>
 
 <div class="divider-section">
-  <img src="assets/pp2" alt="O.M.Ocreation Featured Design" class="divider-image" style="width: 100%; max-width: 900px;">
+  <img src="/assets/pp2.jpg" alt="Featured Design" class="divider-image" style="width:100%; max-width:900px;">
 </div>
 
 <section class="section" id="about">
   <h2 class="section-title">About <span>Us</span></h2>
   <p class="section-subtitle">Discover the story behind O.M.Ocreation and our passion for stone fashion</p>
-  
   <div class="about-grid">
     <div class="about-text">
       <p><strong>O.M.Ocreation</strong> is a premium fashion stone design company located at <strong>3 Oyebo Street, Abiola Way, behind Laroy Suite, Abeokuta 111101, Ogun State, Nigeria</strong>.</p>
@@ -1038,7 +253,7 @@
       <p>With years of experience and a passion for perfection, we create masterpieces that stand out for weddings, parties, and special events.</p>
     </div>
     <div class="about-image">
-      <img src="assets/pp1" alt="O.M.Ocreation fashion stone design">
+      <img src="/assets/pp1.jpg" alt="Fashion stone design">
     </div>
   </div>
 </section>
@@ -1047,28 +262,11 @@
   <div class="section">
     <h2 class="section-title">Our <span>Services</span></h2>
     <p class="section-subtitle">What we offer to make you look stunning</p>
-    
     <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">💎</div>
-        <h3>Original Rhinestones</h3>
-        <p>Premium quality rhinestones for all your fashion needs in Abeokuta.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">💍</div>
-        <h3>Beads & Bridal Materials</h3>
-        <p>Elegant beads, pearls, and premium bridal accessories for your special day.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">📄</div>
-        <h3>Paperstones Sales</h3>
-        <p>High-quality paperstones for unique and creative fashion designs.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🎓</div>
-        <h3>Paperstone Training</h3>
-        <p>Professional training on how to make paperstones. Contact us to enroll!</p>
-      </div>
+      <div class="service-card"><div class="service-icon">💎</div><h3>Original Rhinestones</h3><p>Premium quality rhinestones for all your fashion needs in Abeokuta.</p></div>
+      <div class="service-card"><div class="service-icon">💍</div><h3>Beads & Bridal Materials</h3><p>Elegant beads, pearls, and premium bridal accessories for your special day.</p></div>
+      <div class="service-card"><div class="service-icon">📄</div><h3>Paperstones Sales</h3><p>High-quality paperstones for unique and creative fashion designs.</p></div>
+      <div class="service-card"><div class="service-icon">🎓</div><h3>Paperstone Training</h3><p>Professional training on how to make paperstones. Contact us to enroll!</p></div>
     </div>
   </div>
 </section>
@@ -1076,146 +274,42 @@
 <section class="section" id="gallery">
   <h2 class="section-title">Our <span>Catalog</span></h2>
   <p class="section-subtitle">Browse our stunning stone fashion creations</p>
-  
   <div class="gallery-grid">
-    <div class="gallery-item">
-      <img src="assets/pp1" alt="Luxury Stone Design">
-      <div class="gallery-info">
-        <h3>Luxury Stone Dress</h3>
-        <p>Elegant evening gown with hand-placed crystals</p>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="assets/pp2" alt="Rhinestone Design">
-      <div class="gallery-info">
-        <h3>Rhinestone Craft</h3>
-        <p>Precision-cut rhinestone patterns</p>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="assets/pp3" alt="Bridal Stone Work">
-      <div class="gallery-info">
-        <h3>Bridal Collection</h3>
-        <p>Wedding stone embellishments</p>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="assets/pp4" alt="Paperstone Design">
-      <div class="gallery-info">
-        <h3>Paperstone Art</h3>
-        <p>Creative paperstone designs</p>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="assets/pp5" alt="Beads Collection">
-      <div class="gallery-info">
-        <h3>Beads Collection</h3>
-        <p>Premium beads for fashion</p>
-      </div>
-    </div>
-    <div class="gallery-item">
-      <img src="assets/pp6" alt="Bridal Materials">
-      <div class="gallery-info">
-        <h3>Bridal Materials</h3>
-        <p>Complete bridal stone collection</p>
-      </div>
-    </div>
+    <div class="gallery-item"><img src="/assets/pp1.jpg" alt="Luxury Stone"><div class="gallery-info"><h3>Luxury Stone Dress</h3><p>Elegant evening gown with hand-placed crystals</p></div></div>
+    <div class="gallery-item"><img src="/assets/pp2.jpg" alt="Rhinestone"><div class="gallery-info"><h3>Rhinestone Craft</h3><p>Precision-cut rhinestone patterns</p></div></div>
+    <div class="gallery-item"><img src="/assets/pp3.jpg" alt="Bridal"><div class="gallery-info"><h3>Bridal Collection</h3><p>Wedding stone embellishments</p></div></div>
+    <div class="gallery-item"><img src="/assets/pp4.jpg" alt="Paperstone"><div class="gallery-info"><h3>Paperstone Art</h3><p>Creative paperstone designs</p></div></div>
+    <div class="gallery-item"><img src="/assets/pp5.jpg" alt="Beads"><div class="gallery-info"><h3>Beads Collection</h3><p>Premium beads for fashion</p></div></div>
+    <div class="gallery-item"><img src="/assets/pp6.jpg" alt="Bridal Materials"><div class="gallery-info"><h3>Bridal Materials</h3><p>Complete bridal stone collection</p></div></div>
   </div>
-  
-  <div style="text-align: center; margin-top: 40px;">
-    <a href="gallery.html" class="btn btn-primary">View Full Catalog <i class="fas fa-arrow-right"></i></a>
-  </div>
+  <div style="text-align:center; margin-top:40px;"><a href="gallery.html" class="btn btn-primary">View Full Catalog <i class="fas fa-arrow-right"></i></a></div>
 </section>
 
 <div class="contact-section" id="contact">
   <h2 class="section-title">Contact <span>Us</span></h2>
   <p class="section-subtitle">Get in touch for inquiries, orders, or training registration</p>
-  
   <div class="contact-grid">
     <div class="contact-info">
-      <div class="info-card">
-        <div class="info-icon"><i class="fas fa-location-dot"></i></div>
-        <div class="info-content">
-          <h4>Visit Our Store</h4>
-          <p>3 Oyebo Street, Abiola Way, behind Laroy Suite<br>Abeokuta 111101, Ogun State, Nigeria</p>
-          <a href="https://maps.app.goo.gl/73uZDK4zoHJa17NR7" target="_blank" style="color: var(--pink);">Get Directions <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="info-card">
-        <div class="info-icon"><i class="fas fa-phone"></i></div>
-        <div class="info-content">
-          <h4>Call / WhatsApp</h4>
-          <p><a href="tel:+2348077340294">+234 807 734 0294</a></p>
-          <a href="https://wa.me/2348077340294" target="_blank" style="color: #25D366;"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
-        </div>
-      </div>
-      <div class="info-card">
-        <div class="info-icon"><i class="fas fa-envelope"></i></div>
-        <div class="info-content">
-          <h4>Email Us</h4>
-          <p><a href="mailto:omocreationwebsite@gmail.com">omocreationwebsite@gmail.com</a></p>
-        </div>
-      </div>
-      <div class="info-card">
-        <div class="info-icon"><i class="fas fa-clock"></i></div>
-        <div class="info-content">
-          <h4>Working Hours</h4>
-          <p>Monday - Saturday: 9:00 AM - 6:00 PM<br>Sunday: Closed</p>
-        </div>
-      </div>
+      <div class="info-card"><div class="info-icon"><i class="fas fa-location-dot"></i></div><div class="info-content"><h4>Visit Our Store</h4><p>3 Oyebo Street, Abiola Way, behind Laroy Suite<br>Abeokuta 111101, Ogun State, Nigeria</p><a href="https://maps.app.goo.gl/73uZDK4zoHJa17NR7" target="_blank" style="color:var(--pink);">Get Directions <i class="fas fa-arrow-right"></i></a></div></div>
+      <div class="info-card"><div class="info-icon"><i class="fas fa-phone"></i></div><div class="info-content"><h4>Call / WhatsApp</h4><p><a href="tel:+2348077340294">+234 807 734 0294</a></p><a href="https://wa.me/2348077340294" target="_blank" style="color:#25D366;"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a></div></div>
+      <div class="info-card"><div class="info-icon"><i class="fas fa-envelope"></i></div><div class="info-content"><h4>Email Us</h4><p><a href="mailto:omocreationwebsite@gmail.com">omocreationwebsite@gmail.com</a></p></div></div>
+      <div class="info-card"><div class="info-icon"><i class="fas fa-clock"></i></div><div class="info-content"><h4>Working Hours</h4><p>Monday - Saturday: 9:00 AM - 6:00 PM<br>Sunday: Closed</p></div></div>
     </div>
     <div class="map-container">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.2!2d3.456789!3d7.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8d8e8e8e8e8e%3A0x8e8e8e8e8e8e8e8e!2s3%20Oyebo%20Street%2C%20Abiola%20Way%2C%20behind%20laroy%20suite%2C%20Abeokuta%20111101%2C%20Ogun%20State%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1700000000000!5m2!1sen!2sng" 
-        allowfullscreen="" 
-        loading="lazy">
-      </iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1583.5!2d3.456789!3d7.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8d8e8e8e8e8e%3A0x8e8e8e8e8e8e8e8e!2s3%20Oyebo%20Street%2C%20Abiola%20Way%2C%20behind%20laroy%20suite%2C%20Abeokuta%20111101%2C%20Ogun%20State%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1700000000000!5m2!1sen!2sng" allowfullscreen loading="lazy"></iframe>
     </div>
   </div>
-  
   <div class="social-section">
     <h3 class="social-title">Follow Our Journey</h3>
     <div class="social-grid">
-      <a href="https://www.instagram.com/o.m.ocreations?igsh=MWNvaDVtMGRtYTR3Zg==" target="_blank" class="social-card instagram">
-        <div class="social-icon"><i class="fab fa-instagram"></i></div>
-        <div class="social-info"><h4>Main Instagram</h4><p>@o.m.ocreations</p></div>
-        <i class="fas fa-external-link-alt"></i>
-      </a>
-      <a href="https://www.instagram.com/o.m.ocreationsupshot?igsh=cDZqaXVsb3VienVy" target="_blank" class="social-card instagram">
-        <div class="social-icon"><i class="fab fa-instagram"></i></div>
-        <div class="social-info"><h4>Upshot Instagram</h4><p>@o.m.ocreationsupshot</p></div>
-        <i class="fas fa-external-link-alt"></i>
-      </a>
-      <a href="https://www.facebook.com/share/1A8jUnhgPw/" target="_blank" class="social-card facebook">
-        <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
-        <div class="social-info"><h4>Main Facebook</h4><p>O.M.Ocreation</p></div>
-        <i class="fas fa-external-link-alt"></i>
-      </a>
-      <a href="https://www.facebook.com/share/17xrV2UHZZ/" target="_blank" class="social-card facebook">
-        <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
-        <div class="social-info"><h4>Patternboard</h4><p>Size 6 Patternboard</p></div>
-        <i class="fas fa-external-link-alt"></i>
-      </a>
-      <a href="https://tiktok.com/@o.m.ocreations01" target="_blank" class="social-card tiktok">
-        <div class="social-icon"><i class="fab fa-tiktok"></i></div>
-        <div class="social-info"><h4>TikTok</h4><p>@o.m.ocreations01</p></div>
-        <i class="fas fa-external-link-alt"></i>
-      </a>
-      <a href="https://wa.me/2348077340294" target="_blank" class="social-card whatsapp">
-        <div class="social-icon"><i class="fab fa-whatsapp"></i></div>
-        <div class="social-info"><h4>WhatsApp</h4><p>Order & Inquiries</p></div>
-        <i class="fas fa-comment-dots"></i>
-      </a>
-      <a href="mailto:omocreationwebsite@gmail.com" class="social-card email">
-        <div class="social-icon"><i class="fas fa-envelope"></i></div>
-        <div class="social-info"><h4>Email</h4><p>omocreationwebsite@gmail.com</p></div>
-        <i class="fas fa-paper-plane"></i>
-      </a>
-      <a href="https://instagram.com/o.m.ocreationsdesigns?igshid=OGQ5ZDc2ODk2ZA==" target="_blank" class="social-card instagram">
-        <div class="social-icon"><i class="fab fa-instagram"></i></div>
-        <div class="social-info"><h4>Designs Instagram</h4><p>@o.m.ocreationsdesigns</p></div>
-        <i class="fas fa-external-link-alt"></i>
-      </a>
+      <a href="https://www.instagram.com/o.m.ocreations?igsh=MWNvaDVtMGRtYTR3Zg==" target="_blank" class="social-card instagram"><div class="social-icon"><i class="fab fa-instagram"></i></div><div class="social-info"><h4>Main Instagram</h4><p>@o.m.ocreations</p></div><i class="fas fa-external-link-alt"></i></a>
+      <a href="https://www.instagram.com/o.m.ocreationsupshot?igsh=cDZqaXVsb3VienVy" target="_blank" class="social-card instagram"><div class="social-icon"><i class="fab fa-instagram"></i></div><div class="social-info"><h4>Upshot Instagram</h4><p>@o.m.ocreationsupshot</p></div><i class="fas fa-external-link-alt"></i></a>
+      <a href="https://www.facebook.com/share/1A8jUnhgPw/" target="_blank" class="social-card facebook"><div class="social-icon"><i class="fab fa-facebook-f"></i></div><div class="social-info"><h4>Main Facebook</h4><p>O.M.Ocreation</p></div><i class="fas fa-external-link-alt"></i></a>
+      <a href="https://www.facebook.com/share/17xrV2UHZZ/" target="_blank" class="social-card facebook"><div class="social-icon"><i class="fab fa-facebook-f"></i></div><div class="social-info"><h4>Patternboard</h4><p>Size 6 Patternboard</p></div><i class="fas fa-external-link-alt"></i></a>
+      <a href="https://tiktok.com/@o.m.ocreations01" target="_blank" class="social-card tiktok"><div class="social-icon"><i class="fab fa-tiktok"></i></div><div class="social-info"><h4>TikTok</h4><p>@o.m.ocreations01</p></div><i class="fas fa-external-link-alt"></i></a>
+      <a href="https://wa.me/2348077340294" target="_blank" class="social-card whatsapp"><div class="social-icon"><i class="fab fa-whatsapp"></i></div><div class="social-info"><h4>WhatsApp</h4><p>Order & Inquiries</p></div><i class="fas fa-comment-dots"></i></a>
+      <a href="mailto:omocreationwebsite@gmail.com" class="social-card email"><div class="social-icon"><i class="fas fa-envelope"></i></div><div class="social-info"><h4>Email</h4><p>omocreationwebsite@gmail.com</p></div><i class="fas fa-paper-plane"></i></a>
+      <a href="https://instagram.com/o.m.ocreationsdesigns?igshid=OGQ5ZDc2ODk2ZA==" target="_blank" class="social-card instagram"><div class="social-icon"><i class="fab fa-instagram"></i></div><div class="social-info"><h4>Designs Instagram</h4><p>@o.m.ocreationsdesigns</p></div><i class="fas fa-external-link-alt"></i></a>
     </div>
   </div>
 </div>
@@ -1227,7 +321,7 @@
     <input type="email" placeholder="Your email address" required>
     <button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
   </form>
-  <p style="margin-top: 12px; font-size: 0.7rem; opacity: 0.8;">We respect your privacy. Unsubscribe anytime.</p>
+  <p style="margin-top:12px; font-size:0.7rem; opacity:0.8;">We respect your privacy. Unsubscribe anytime.</p>
 </div>
 
 <footer class="footer">
@@ -1243,218 +337,105 @@
         <a href="https://wa.me/2348077340294" target="_blank"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
-    <div class="footer-col">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#gallery">Catalog</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Our Products</h4>
-      <ul>
-        <li><a href="#">Original Rhinestones</a></li>
-        <li><a href="#">Beads Collection</a></li>
-        <li><a href="#">Bridal Materials</a></li>
-        <li><a href="#">Paperstones</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact Info</h4>
-      <ul>
-        <li><i class="fas fa-location-dot"></i> 3 Oyebo Street, Abeokuta</li>
-        <li><i class="fas fa-phone"></i> +234 807 734 0294</li>
-        <li><i class="fas fa-envelope"></i> omocreationwebsite@gmail.com</li>
-      </ul>
-    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#gallery">Catalog</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Our Products</h4><ul><li><a href="#">Original Rhinestones</a></li><li><a href="#">Beads Collection</a></li><li><a href="#">Bridal Materials</a></li><li><a href="#">Paperstones</a></li></ul></div>
+    <div class="footer-col"><h4>Contact Info</h4><ul><li><i class="fas fa-location-dot"></i> 3 Oyebo Street, Abeokuta</li><li><i class="fas fa-phone"></i> +234 807 734 0294</li><li><i class="fas fa-envelope"></i> omocreationwebsite@gmail.com</li></ul></div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2026 O.M.Ocreation. All Rights Reserved. | Sales of Beads, Rhinestones & Bridal Materials in Abeokuta, Ogun State, Nigeria</p>
-  </div>
+  <div class="footer-bottom"><p>&copy; 2026 O.M.Ocreation. All Rights Reserved. | Sales of Beads, Rhinestones & Bridal Materials in Abeokuta, Ogun State, Nigeria</p></div>
 </footer>
 
-<a href="https://wa.me/2348077340294" target="_blank" class="whatsapp-float">
-  <i class="fab fa-whatsapp"></i>
-</a>
-<a href="#" class="back-to-top" id="backToTop">
-  <i class="fas fa-arrow-up"></i>
-</a>
+<a href="https://wa.me/2348077340294" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+<a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
 
 <script>
-  // Floating Particles
+  // Particles
   function createParticles() {
     const container = document.getElementById('particles');
-    if (!container) return;
-    
-    for (let i = 0; i < 30; i++) {
-      const particle = document.createElement('div');
-      particle.classList.add('particle');
-      const size = Math.random() * 100 + 50;
-      particle.style.width = size + 'px';
-      particle.style.height = size + 'px';
-      particle.style.left = Math.random() * 100 + '%';
-      particle.style.top = Math.random() * 100 + '%';
-      particle.style.animationDelay = Math.random() * 20 + 's';
-      particle.style.animationDuration = Math.random() * 20 + 15 + 's';
-      container.appendChild(particle);
+    if(!container) return;
+    for(let i=0;i<30;i++) {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      const s = Math.random()*100+50;
+      p.style.width = s+'px'; p.style.height = s+'px';
+      p.style.left = Math.random()*100+'%';
+      p.style.top = Math.random()*100+'%';
+      p.style.animationDelay = Math.random()*20+'s';
+      p.style.animationDuration = Math.random()*20+15+'s';
+      container.appendChild(p);
     }
   }
   createParticles();
-  
-  // Image Slider
+
+  // Slider
   const slides = document.querySelectorAll('.slide');
   const prevBtn = document.getElementById('prevSlide');
   const nextBtn = document.getElementById('nextSlide');
   const dotsContainer = document.getElementById('sliderDots');
-  
-  let currentSlide = 0;
-  let slideInterval;
-  
-  if (dotsContainer && slides.length) {
-    slides.forEach((_, index) => {
+  let currentSlide = 0, slideInterval;
+  if(dotsContainer && slides.length) {
+    slides.forEach((_,i) => {
       const dot = document.createElement('div');
       dot.classList.add('dot');
-      if (index === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => {
-        goToSlide(index);
-        startAutoSlide();
-      });
+      if(i===0) dot.classList.add('active');
+      dot.addEventListener('click',()=>goToSlide(i));
       dotsContainer.appendChild(dot);
     });
   }
-  
   const dots = document.querySelectorAll('.dot');
-  
   function goToSlide(index) {
-    if (!slides.length) return;
+    if(!slides.length) return;
     slides[currentSlide]?.classList.remove('active');
     dots[currentSlide]?.classList.remove('active');
-    currentSlide = (index + slides.length) % slides.length;
+    currentSlide = (index+slides.length)%slides.length;
     slides[currentSlide]?.classList.add('active');
     dots[currentSlide]?.classList.add('active');
   }
-  
-  function nextSlide() { goToSlide(currentSlide + 1); }
-  function prevSlide() { goToSlide(currentSlide - 1); }
-  
-  function startAutoSlide() {
-    if (slideInterval) clearInterval(slideInterval);
-    slideInterval = setInterval(nextSlide, 6000);
-  }
-  
-  if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); startAutoSlide(); });
-  if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); startAutoSlide(); });
-  
+  function nextSlide() { goToSlide(currentSlide+1); }
+  function prevSlide() { goToSlide(currentSlide-1); }
+  function startAutoSlide() { if(slideInterval) clearInterval(slideInterval); slideInterval = setInterval(nextSlide,5000); }
+  if(prevBtn) prevBtn.addEventListener('click',()=>{ prevSlide(); startAutoSlide(); });
+  if(nextBtn) nextBtn.addEventListener('click',()=>{ nextSlide(); startAutoSlide(); });
   startAutoSlide();
-  
-  // Mobile Menu
+
+  // Mobile menu
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('navMenu');
   const closeMenu = document.getElementById('closeMenu');
-  
-  function openMenu() {
-    navMenu?.classList.add('active');
-    hamburger?.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-  
-  function closeMenuFunc() {
-    navMenu?.classList.remove('active');
-    hamburger?.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-  
-  if (hamburger) hamburger.addEventListener('click', openMenu);
-  if (closeMenu) closeMenu.addEventListener('click', closeMenuFunc);
-  
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', closeMenuFunc);
-  });
-  
-  // Navbar scroll effect
+  function openMenu() { navMenu?.classList.add('active'); hamburger?.classList.add('active'); document.body.style.overflow = 'hidden'; }
+  function closeMenuFunc() { navMenu?.classList.remove('active'); hamburger?.classList.remove('active'); document.body.style.overflow = ''; }
+  if(hamburger) hamburger.addEventListener('click', openMenu);
+  if(closeMenu) closeMenu.addEventListener('click', closeMenuFunc);
+  document.querySelectorAll('.nav-link').forEach(link=>link.addEventListener('click',closeMenuFunc));
+
+  // Navbar scroll
   const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar?.classList.add('scrolled');
-    } else {
-      navbar?.classList.remove('scrolled');
-    }
-  });
-  
+  window.addEventListener('scroll',()=>{ navbar?.classList.toggle('scrolled', window.scrollY>50); });
+
   // Back to top
   const backToTop = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      backToTop?.classList.add('show');
-    } else {
-      backToTop?.classList.remove('show');
-    }
-  });
-  
-  if (backToTop) {
-    backToTop.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-  
+  window.addEventListener('scroll',()=>{ backToTop?.classList.toggle('show', window.scrollY>300); });
+  if(backToTop) backToTop.addEventListener('click',(e)=>{ e.preventDefault(); window.scrollTo({top:0,behavior:'smooth'}); });
+
   // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      const target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
-        closeMenuFunc();
-      }
+  document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+    anchor.addEventListener('click',function(e){
+      const target = document.querySelector(this.getAttribute('href'));
+      if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); closeMenuFunc(); }
     });
   });
-  
+
   // Newsletter
   const newsletterForm = document.getElementById('newsletterForm');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = newsletterForm.querySelector('input').value;
-      alert(`✨ Thank you for subscribing! We'll send updates to ${email}`);
-      newsletterForm.reset();
-    });
-  }
-  
-  // Logo fallback
-  const logoImg = document.getElementById('logoImg');
-  if (logoImg) {
-    logoImg.onerror = function() {
-      this.style.display = 'none';
-    };
-  }
-  
+  if(newsletterForm) newsletterForm.addEventListener('submit',(e)=>{ e.preventDefault(); alert('✨ Thank you for subscribing!'); newsletterForm.reset(); });
+
   // Scroll animations
   const animateElements = document.querySelectorAll('.service-card, .gallery-item, .info-card');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-  
-  animateElements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
-  
-  console.log('%c✨ O.M.Ocreation - Luxury Stone Fashion ✨', 'color: #ff4da6; font-size: 16px; font-weight: bold;');
-</script>
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; } });
+  },{threshold:0.1});
+  animateElements.forEach(el=>{ el.style.opacity='0'; el.style.transform='translateY(30px)'; el.style.transition='opacity 0.6s ease, transform 0.6s ease'; observer.observe(el); });
 
+  console.log('%c✨ O.M.Ocreation - Luxury Stone Fashion ✨','color:#ff4da6;font-size:16px;font-weight:bold;');
+</script>
 </body>
 </html>
