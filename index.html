@@ -6,22 +6,592 @@
   <meta name="description" content="O.M.Ocreation - Luxury Stone Fashion & Machine Stone Designs" />
   <title>O.M.Ocreation - Luxury Stone Fashion</title>
   
-  <!-- Fonts -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- External CSS -->
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ============================================
+       COMPLETE STYLESHEET - FULL COLORS & ANIMATIONS
+       ============================================ */
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #ffffff;
+      overflow-x: hidden;
+    }
+    
+    /* PINK COLOR SCHEME */
+    :root {
+      --pink-primary: #ff4da6;
+      --pink-dark: #e6398c;
+      --pink-light: #ff85c1;
+      --pink-soft: #ffd6e7;
+      --pink-glow: rgba(255, 77, 166, 0.2);
+      --dark: #1a1a2e;
+      --gray: #6c757d;
+      --white: #ffffff;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: var(--pink-soft); }
+    ::-webkit-scrollbar-thumb { background: var(--pink-primary); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--pink-dark); }
+    
+    /* Selection Color */
+    ::selection { background: var(--pink-primary); color: white; }
+    
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 15px 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .navbar.scrolled { padding: 10px 0; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .nav-container { display: flex; justify-content: space-between; align-items: center; }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .logo .logo-icon { font-size: 1.8rem; }
+    .logo .logo-text { color: var(--dark); }
+    .logo .logo-pink { color: var(--pink-primary); }
+    
+    .nav-menu { display: flex; gap: 30px; list-style: none; }
+    .nav-link {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: 0.3s;
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--pink-primary);
+      transition: 0.3s;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link:hover { color: var(--pink-primary); }
+    
+    .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .menu-toggle span { width: 25px; height: 2px; background: var(--dark); transition: 0.3s; }
+    
+    /* HERO SECTION - PINK GRADIENT */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ff4da6, #ff85c1, #ffd6e7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+      background-size: cover;
+      bottom: 0;
+      opacity: 0.3;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; padding: 20px; }
+    .hero h1 {
+      font-size: 3.5rem;
+      color: white;
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+      animation: fadeInDown 1s ease;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 30px;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .btn-primary {
+      background: white;
+      color: #ff4da6;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+    .btn-outline {
+      border: 2px solid white;
+      color: white;
+      background: transparent;
+    }
+    .btn-outline:hover { background: white; color: #ff4da6; transform: translateY(-3px); }
+    
+    /* Section Styles */
+    .section { padding: 80px 0; }
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: var(--dark);
+      margin-bottom: 15px;
+      font-family: 'Playfair Display', serif;
+      position: relative;
+    }
+    .section-title .pink { color: var(--pink-primary); }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--pink-primary), var(--pink-light));
+      border-radius: 3px;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 20px auto 50px;
+    }
+    
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .about-text p {
+      color: var(--gray);
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+    .about-image {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    .about-image img {
+      width: 100%;
+      height: auto;
+      transition: 0.5s;
+    }
+    .about-image:hover img { transform: scale(1.05); }
+    
+    /* Services Grid */
+    .services { background: var(--pink-soft); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .service-card {
+      background: white;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(255,77,166,0.15);
+    }
+    .service-icon { font-size: 3rem; margin-bottom: 20px; }
+    .service-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--dark); }
+    .service-card p { color: var(--gray); }
+    
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+    .gallery-item {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-info { padding: 15px; background: white; }
+    .gallery-info h3 { font-size: 1.1rem; color: var(--pink-primary); }
+    
+    /* Contact Grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 25px; }
+    .info-card {
+      display: flex;
+      gap: 15px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 15px;
+      transition: 0.3s;
+    }
+    .info-card:hover {
+      background: var(--pink-soft);
+      transform: translateX(10px);
+    }
+    .info-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--pink-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+    .info-content h4 { margin-bottom: 5px; color: var(--dark); }
+    .info-content p, .info-content a { color: var(--gray); text-decoration: none; }
+    .info-content a:hover { color: var(--pink-primary); }
+    
+    .map-container {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 350px;
+      border: 0;
+    }
+    
+    /* Social Section */
+    .social-section { margin-top: 60px; }
+    .social-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 40px;
+      color: var(--dark);
+    }
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .social-card {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 16px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: 0.3s;
+      color: white;
+    }
+    .social-card:hover { transform: translateY(-3px); }
+    .social-card.instagram { background: linear-gradient(135deg, #833AB4, #E1306C, #F77737); }
+    .social-card.facebook { background: linear-gradient(135deg, #1877F2, #0C63D4); }
+    .social-card.tiktok { background: linear-gradient(135deg, #000000, #25F4EE, #FE2C55); }
+    .social-card.whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); }
+    .social-card.email { background: linear-gradient(135deg, #EA4335, #C5221F); }
+    .social-icon {
+      width: 45px;
+      height: 45px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+    .social-info { flex: 1; }
+    .social-info h4 { font-size: 1rem; margin-bottom: 4px; }
+    .social-info p { font-size: 0.75rem; opacity: 0.8; }
+    
+    /* Newsletter */
+    .newsletter {
+      background: linear-gradient(135deg, var(--pink-primary), var(--pink-dark));
+      margin: 40px 0;
+      border-radius: 20px;
+      padding: 60px 40px;
+      text-align: center;
+      color: white;
+    }
+    .newsletter h3 { font-size: 1.8rem; margin-bottom: 15px; }
+    .newsletter-form {
+      display: flex;
+      gap: 15px;
+      max-width: 500px;
+      margin: 30px auto 0;
+      flex-wrap: wrap;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      outline: none;
+    }
+    .newsletter-form button {
+      padding: 14px 30px;
+      background: var(--dark);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .newsletter-form button:hover {
+      background: #2b2b3b;
+      transform: translateY(-2px);
+    }
+    
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 0 20px;
+      margin-top: 60px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 15px; }
+    .footer-logo .pink { color: var(--pink-primary); }
+    .footer-col p { color: rgba(255,255,255,0.7); line-height: 1.8; }
+    .footer-col h4 {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .footer-col h4::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 30px;
+      height: 2px;
+      background: var(--pink-primary);
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 12px; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .footer-col ul li a:hover {
+      color: var(--pink-primary);
+      padding-left: 5px;
+    }
+    .footer-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .footer-social a {
+      width: 35px;
+      height: 35px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: 0.3s;
+    }
+    .footer-social a:hover {
+      background: var(--pink-primary);
+      transform: translateY(-3px);
+    }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.5);
+      font-size: 0.875rem;
+    }
+    
+    /* Floating WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      box-shadow: 0 5px 20px rgba(37,211,102,0.4);
+      transition: 0.3s;
+      z-index: 999;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 45px;
+      height: 45px;
+      background: var(--pink-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+      z-index: 999;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover {
+      background: var(--pink-dark);
+      transform: translateY(-3px);
+    }
+    
+    /* Animations */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scrollWheel {
+      0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    }
+    
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 2;
+    }
+    .scroll-indicator span {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .scroll-mouse {
+      width: 26px;
+      height: 42px;
+      border: 2px solid var(--white);
+      border-radius: 20px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .scroll-wheel {
+      width: 4px;
+      height: 8px;
+      background: var(--white);
+      border-radius: 2px;
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: scrollWheel 1.5s infinite;
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .menu-toggle { display: flex; }
+      .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        transition: 0.3s;
+      }
+      .nav-menu.active { left: 0; }
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+      .section { padding: 50px 0; }
+      .section-title { font-size: 1.8rem; }
+      .newsletter { padding: 40px 20px; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-form button { width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .info-card { flex-direction: column; text-align: center; }
+      .info-icon { margin: 0 auto; }
+    }
+  </style>
 </head>
 <body>
-
-<!-- Preloader -->
-<div class="preloader" id="preloader">
-  <div class="preloader-spinner"></div>
-  <div class="preloader-text">O.M.Ocreation</div>
-</div>
 
 <!-- Navigation -->
 <nav class="navbar" id="navbar">
@@ -47,15 +617,10 @@
 
 <!-- Hero Section -->
 <section class="hero" id="home">
-  <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-badge">✨ Since 2020 ✨</div>
-    <h1 class="hero-title">
-      <span class="hero-title-line">Luxury Stone</span>
-      <span class="hero-title-line">Fashion & Machine Art</span>
-    </h1>
-    <p class="hero-subtitle">Where elegance meets craftsmanship in every detail. Transforming fabrics into masterpieces with premium stone designs.</p>
-    <div class="hero-buttons">
+    <h1>O.M.Ocreation</h1>
+    <p>Luxury Stone Fashion & Machine Stone Designs. Where elegance meets craftsmanship in every detail.</p>
+    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
       <a href="#gallery" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Explore Our Work</a>
       <a href="https://wa.me/2348107595812" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>
     </div>
@@ -71,45 +636,17 @@
 <!-- About Section -->
 <section class="section" id="about">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag">About Us</span>
-      <h2 class="section-title">About <span class="pink">Us</span></h2>
-      <p class="section-subtitle">Discover the story behind O.M.Ocreation and our passion for stone fashion</p>
-    </div>
+    <h2 class="section-title">About <span class="pink">Us</span></h2>
+    <p class="section-subtitle">Discover the story behind O.M.Ocreation and our passion for stone fashion</p>
     
     <div class="about-grid">
-      <div class="about-content">
-        <div class="about-text">
-          <p><strong>O.M.Ocreation</strong> is a premium fashion stone design company located at <strong>Abiola Way, behind Laroy Hotel, Abeokuta, Ogun State, Nigeria</strong>. We specialize in high-quality stone dress designs and machine stone artistry, blending creativity with luxury.</p>
-          <p>Our mission is to bring elegance, beauty, and uniqueness to every fabric we touch. With years of experience and a passion for perfection, we create masterpieces that stand out for weddings, parties, and special events.</p>
-          <p>Every piece is crafted with attention to detail, using only the finest stones and materials. We believe that fashion is art, and we are here to make you the masterpiece.</p>
-        </div>
-        <div class="about-stats">
-          <div class="stat">
-            <span class="stat-number">500+</span>
-            <span class="stat-label">Happy Clients</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">1000+</span>
-            <span class="stat-label">Designs Created</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">50+</span>
-            <span class="stat-label">Bridal Collections</span>
-          </div>
-        </div>
+      <div class="about-text">
+        <p><strong>O.M.Ocreation</strong> is a premium fashion stone design company located at <strong>Abiola Way, behind Laroy Hotel, Abeokuta, Ogun State, Nigeria</strong>. We specialize in high-quality stone dress designs and machine stone artistry, blending creativity with luxury.</p>
+        <p>Our mission is to bring elegance, beauty, and uniqueness to every fabric we touch. With years of experience and a passion for perfection, we create masterpieces that stand out for weddings, parties, and special events.</p>
+        <p>Every piece is crafted with attention to detail, using only the finest stones and materials. We believe that fashion is art, and we are here to make you the masterpiece.</p>
       </div>
       <div class="about-image">
-        <div class="about-image-wrapper">
-          <img src="https://images.unsplash.com/photo-1520975922284-9b2f8b4d6b7a?w=600" alt="Luxury fashion stone design">
-          <div class="about-image-overlay">
-            <i class="fas fa-play"></i>
-          </div>
-        </div>
-        <div class="about-experience">
-          <span class="exp-years">5+</span>
-          <span class="exp-text">Years of <br>Excellence</span>
-        </div>
+        <img src="https://images.unsplash.com/photo-1520975922284-9b2f8b4d6b7a?w=600" alt="Luxury fashion stone design">
       </div>
     </div>
   </div>
@@ -118,36 +655,29 @@
 <!-- Services Section -->
 <section class="services section" id="services">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag">What We Offer</span>
-      <h2 class="section-title">Our <span class="pink">Services</span></h2>
-      <p class="section-subtitle">We provide exceptional stone fashion services tailored to your needs</p>
-    </div>
+    <h2 class="section-title">Our <span class="pink">Services</span></h2>
+    <p class="section-subtitle">What we offer to make you look stunning</p>
     
     <div class="services-grid">
       <div class="service-card">
         <div class="service-icon">💎</div>
         <h3>Luxury Stone Dresses</h3>
         <p>Exquisite stone embellishments for special occasions, weddings, and red carpet events.</p>
-        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
         <div class="service-icon">⚙️</div>
         <h3>Machine Stone Art</h3>
         <p>Precision machine stone work for modern, elegant, and contemporary designs.</p>
-        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
         <div class="service-icon">🎨</div>
         <h3>Custom Design</h3>
         <p>Personalized stone patterns tailored to your unique style and preferences.</p>
-        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="service-card">
         <div class="service-icon">👗</div>
         <h3>Fashion Consultation</h3>
         <p>Expert advice on stone placement, color matching, and design harmony.</p>
-        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </div>
@@ -156,64 +686,40 @@
 <!-- Gallery Section -->
 <section class="section" id="gallery">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Our Creations</span>
-      <h2 class="section-title">Featured <span class="pink">Designs</span></h2>
-      <p class="section-subtitle">Browse some of our most stunning stone fashion creations</p>
-    </div>
+    <h2 class="section-title">Our <span class="pink">Designs</span></h2>
+    <p class="section-subtitle">Browse our latest stone fashion creations</p>
     
     <div class="gallery-grid">
       <div class="gallery-item">
-        <div class="gallery-image">
-          <img src="https://images.unsplash.com/photo-1520975922284-9b2f8b4d6b7a?w=400" alt="Luxury Stone Dress">
-          <div class="gallery-overlay">
-            <a href="#" class="gallery-link"><i class="fas fa-search-plus"></i></a>
-          </div>
-        </div>
+        <img src="https://images.unsplash.com/photo-1520975922284-9b2f8b4d6b7a?w=400" alt="Luxury Stone Dress">
         <div class="gallery-info">
           <h3>Luxury Stone Dress</h3>
           <p>Elegant evening gown with hand-placed crystals</p>
         </div>
       </div>
       <div class="gallery-item">
-        <div class="gallery-image">
-          <img src="https://images.unsplash.com/photo-1521335629791-ce4aec67dd49?w=400" alt="Machine Stone Craft">
-          <div class="gallery-overlay">
-            <a href="#" class="gallery-link"><i class="fas fa-search-plus"></i></a>
-          </div>
-        </div>
+        <img src="https://images.unsplash.com/photo-1521335629791-ce4aec67dd49?w=400" alt="Machine Stone Craft">
         <div class="gallery-info">
           <h3>Machine Stone Craft</h3>
           <p>Precision-cut stone patterns for modern looks</p>
         </div>
       </div>
       <div class="gallery-item">
-        <div class="gallery-image">
-          <img src="https://images.unsplash.com/photo-1520975682031-ae7c0b3a0d6c?w=400" alt="Elegant Fashion Stones">
-          <div class="gallery-overlay">
-            <a href="#" class="gallery-link"><i class="fas fa-search-plus"></i></a>
-          </div>
-        </div>
+        <img src="https://images.unsplash.com/photo-1520975682031-ae7c0b3a0d6c?w=400" alt="Elegant Fashion Stones">
         <div class="gallery-info">
           <h3>Elegant Fashion Stones</h3>
           <p>Delicate stone work for casual elegance</p>
         </div>
       </div>
     </div>
-    <div class="gallery-btn-wrapper">
-      <a href="#" class="btn btn-outline">View Full Gallery <i class="fas fa-arrow-right"></i></a>
-    </div>
   </div>
 </section>
 
 <!-- Contact Section -->
-<section class="section contact-section" id="contact">
+<section class="section" style="background: #f8f9fa;" id="contact">
   <div class="container">
-    <div class="section-header">
-      <span class="section-tag">Get In Touch</span>
-      <h2 class="section-title">Contact <span class="pink">Us</span></h2>
-      <p class="section-subtitle">We'd love to hear from you. Reach out for inquiries, orders, or collaborations.</p>
-    </div>
+    <h2 class="section-title">Contact <span class="pink">Us</span></h2>
+    <p class="section-subtitle">Get in touch with us for inquiries and orders</p>
     
     <div class="contact-grid">
       <div class="contact-info">
@@ -222,7 +728,7 @@
           <div class="info-content">
             <h4>Visit Our Studio</h4>
             <p>Abiola Way, Behind Laroy Hotel<br>Abeokuta, Ogun State, Nigeria</p>
-            <a href="https://maps.app.goo.gl/KMm6d1zQkZmu5HNu7?g_st=awb" target="_blank" class="info-link">Get Directions <i class="fas fa-arrow-right"></i></a>
+            <a href="https://maps.app.goo.gl/KMm6d1zQkZmu5HNu7?g_st=awb" target="_blank" style="color: #ff4da6;">Get Directions <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
         <div class="info-card">
@@ -230,7 +736,7 @@
           <div class="info-content">
             <h4>Call / WhatsApp</h4>
             <p><a href="tel:+2348107595812">+234 810 759 5812</a></p>
-            <a href="https://wa.me/2348107595812" target="_blank" class="info-link whatsapp-link"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+            <a href="https://wa.me/2348107595812" target="_blank" style="color: #25D366;"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
           </div>
         </div>
         <div class="info-card">
@@ -263,7 +769,7 @@
             <h4>Main Instagram</h4>
             <p>@o.m.ocreations</p>
           </div>
-          <i class="fas fa-external-link-alt social-follow"></i>
+          <i class="fas fa-external-link-alt"></i>
         </a>
         <a href="https://instagram.com/o.m.ocreationsdesigns?igshid=OGQ5ZDc2ODk2ZA==" target="_blank" class="social-card instagram">
           <div class="social-icon"><i class="fab fa-instagram"></i></div>
@@ -271,7 +777,7 @@
             <h4>Designs Instagram</h4>
             <p>@o.m.ocreationsdesigns</p>
           </div>
-          <i class="fas fa-external-link-alt social-follow"></i>
+          <i class="fas fa-external-link-alt"></i>
         </a>
         <a href="https://www.instagram.com/o.m.ocreationsupshot?igsh=cDZqaXVsb3VienVy" target="_blank" class="social-card instagram">
           <div class="social-icon"><i class="fab fa-instagram"></i></div>
@@ -279,7 +785,7 @@
             <h4>Upshot Instagram</h4>
             <p>@o.m.ocreationsupshot</p>
           </div>
-          <i class="fas fa-external-link-alt social-follow"></i>
+          <i class="fas fa-external-link-alt"></i>
         </a>
         <a href="https://www.facebook.com/share/1A8jUnhgPw/" target="_blank" class="social-card facebook">
           <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
@@ -287,7 +793,7 @@
             <h4>Main Facebook</h4>
             <p>O.M.Ocreation</p>
           </div>
-          <i class="fas fa-external-link-alt social-follow"></i>
+          <i class="fas fa-external-link-alt"></i>
         </a>
         <a href="https://www.facebook.com/share/17xrV2UHZZ/" target="_blank" class="social-card facebook">
           <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
@@ -295,7 +801,7 @@
             <h4>Patternboard Design</h4>
             <p>Size 6 Patternboard</p>
           </div>
-          <i class="fas fa-external-link-alt social-follow"></i>
+          <i class="fas fa-external-link-alt"></i>
         </a>
         <a href="https://tiktok.com/@o.m.ocreations01" target="_blank" class="social-card tiktok">
           <div class="social-icon"><i class="fab fa-tiktok"></i></div>
@@ -303,7 +809,7 @@
             <h4>TikTok</h4>
             <p>@o.m.ocreations01</p>
           </div>
-          <i class="fas fa-external-link-alt social-follow"></i>
+          <i class="fas fa-external-link-alt"></i>
         </a>
         <a href="https://wa.me/2348107595812" target="_blank" class="social-card whatsapp">
           <div class="social-icon"><i class="fab fa-whatsapp"></i></div>
@@ -311,7 +817,7 @@
             <h4>WhatsApp Business</h4>
             <p>Order & Inquiries</p>
           </div>
-          <i class="fas fa-comment-dots social-follow"></i>
+          <i class="fas fa-comment-dots"></i>
         </a>
         <a href="mailto:omocreationwebsite@gmail.com" class="social-card email">
           <div class="social-icon"><i class="fas fa-envelope"></i></div>
@@ -319,7 +825,7 @@
             <h4>Email</h4>
             <p>omocreationwebsite@gmail.com</p>
           </div>
-          <i class="fas fa-paper-plane social-follow"></i>
+          <i class="fas fa-paper-plane"></i>
         </a>
       </div>
     </div>
@@ -328,15 +834,14 @@
 
 <!-- Newsletter Section -->
 <div class="container">
-  <div class="newsletter-wrapper">
-    <div class="newsletter-icon">📧</div>
+  <div class="newsletter">
     <h3>Stay Updated</h3>
     <p>Subscribe to our newsletter for exclusive offers, new collections, and fashion tips</p>
     <form class="newsletter-form" id="newsletterForm">
       <input type="email" placeholder="Your email address" required>
       <button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
     </form>
-    <p class="newsletter-note">We respect your privacy. Unsubscribe anytime.</p>
+    <p style="margin-top: 15px; font-size: 0.75rem; opacity: 0.8;">We respect your privacy. Unsubscribe anytime.</p>
   </div>
 </div>
 
@@ -375,7 +880,7 @@
       </div>
       <div class="footer-col">
         <h4>Contact Info</h4>
-        <ul class="footer-contact">
+        <ul>
           <li><i class="fas fa-location-dot"></i> Abiola Way, Behind Laroy Hotel</li>
           <li><i class="fas fa-phone"></i> +234 810 759 5812</li>
           <li><i class="fas fa-envelope"></i> omocreationwebsite@gmail.com</li>
@@ -383,15 +888,14 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 O.M.Ocreation. All Rights Reserved. | Crafted with <i class="fas fa-heart"></i> in Nigeria</p>
+      <p>&copy; 2026 O.M.Ocreation. All Rights Reserved. | Crafted with <i class="fas fa-heart" style="color: #ff4da6;"></i> in Nigeria</p>
     </div>
   </div>
 </footer>
 
 <!-- Floating WhatsApp -->
-<a href="https://wa.me/2348107595812" target="_blank" class="whatsapp-float" id="whatsappFloat">
+<a href="https://wa.me/2348107595812" target="_blank" class="whatsapp-float">
   <i class="fab fa-whatsapp"></i>
-  <span class="whatsapp-tooltip">Chat with us!</span>
 </a>
 
 <!-- Back to Top -->
@@ -399,8 +903,98 @@
   <i class="fas fa-arrow-up"></i>
 </a>
 
-<!-- External JavaScript -->
-<script src="js/main.js"></script>
+<script>
+  // Mobile Menu Toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+  
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+  }
+  
+  // Close menu when clicking link
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+    });
+  });
+  
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+  
+  // Back to top button
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTop.classList.add('show');
+    } else {
+      backToTop.classList.remove('show');
+    }
+  });
+  
+  if (backToTop) {
+    backToTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+  
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+  
+  // Newsletter form
+  const newsletterForm = document.getElementById('newsletterForm');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = newsletterForm.querySelector('input').value;
+      alert(`Thank you for subscribing! We'll send updates to ${email}`);
+      newsletterForm.reset();
+    });
+  }
+  
+  // Add animation on scroll
+  const animateOnScroll = () => {
+    const elements = document.querySelectorAll('.service-card, .gallery-item, .info-card, .social-card');
+    elements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }
+    });
+  };
+  
+  // Set initial styles
+  document.querySelectorAll('.service-card, .gallery-item, .info-card, .social-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  });
+  
+  window.addEventListener('scroll', animateOnScroll);
+  animateOnScroll();
+  
+  // Console welcome
+  console.log('%c✨ O.M.Ocreation - Luxury Stone Fashion ✨', 'color: #ff4da6; font-size: 16px; font-weight: bold;');
+</script>
 
 </body>
 </html>
