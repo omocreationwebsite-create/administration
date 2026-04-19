@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Test</title>
+  <style>
+    body { font-family: monospace; padding: 20px; background: #f0f0f0; }
+    .test { background: white; padding: 15px; margin: 10px 0; border-radius: 8px; }
+    img { max-width: 200px; max-height: 150px; border: 1px solid #ccc; margin: 5px; }
+    .success { color: green; }
+    .fail { color: red; }
+  </style>
+</head>
+<body>
+  <h1>Image Path Test</h1>
+  <p>Checking if images load from <code>/assets/</code> (root folder)</p>
+
+  <div class="test">
+    <h3>Hero Images (p1 to p6)</h3>
+    <div id="hero"></div>
+  </div>
+
+  <div class="test">
+    <h3>Gallery Images (pp1 to pp6)</h3>
+    <div id="gallery"></div>
+  </div>
+
+  <div class="test">
+    <h3>Logo</h3>
+    <div id="logo"></div>
+  </div>
+
+  <script>
+    const heroFiles = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6'];
+    const galleryFiles = ['pp1', 'pp2', 'pp3', 'pp4', 'pp5', 'pp6'];
+    const logoFile = 'log1';
+
+    const heroDiv = document.getElementById('hero');
+    const galleryDiv = document.getElementById('gallery');
+    const logoDiv = document.getElementById('logo');
+
+    heroFiles.forEach(file => {
+      const img = document.createElement('img');
+      img.src = `/assets/${file}`;
+      img.onload = () => { console.log(`✅ Loaded: /assets/${file}`); };
+      img.onerror = () => { console.log(`❌ Failed: /assets/${file}`); };
+      heroDiv.appendChild(img);
+      heroDiv.appendChild(document.createTextNode(` /assets/${file} `));
+    });
+
+    galleryFiles.forEach(file => {
+      const img = document.createElement('img');
+      img.src = `/assets/${file}`;
+      img.onload = () => { console.log(`✅ Loaded: /assets/${file}`); };
+      img.onerror = () => { console.log(`❌ Failed: /assets/${file}`); };
+      galleryDiv.appendChild(img);
+      galleryDiv.appendChild(document.createTextNode(` /assets/${file} `));
+    });
+
+    const logoImg = document.createElement('img');
+    logoImg.src = `/assets/${logoFile}`;
+    logoImg.onload = () => { console.log(`✅ Logo loaded: /assets/${logoFile}`); };
+    logoImg.onerror = () => { console.log(`❌ Logo failed: /assets/${logoFile}`); };
+    logoDiv.appendChild(logoImg);
+    logoDiv.appendChild(document.createTextNode(` /assets/${logoFile} `));
+  </script>
+
+  <p><strong>Open your browser's console (F12) to see which images loaded successfully.</strong></p>
+  <p>If images fail, check that your files are in the <code>/assets/</code> folder at the <strong>root</strong> of your repository (same level as the <code>administration</code> folder), and that they have <strong>no file extensions</strong> (e.g., just <code>p1</code>, not <code>p1.jpg</code>).</p>
+</body>
+</html>
