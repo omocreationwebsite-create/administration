@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="O.M.Ocreation - Luxury Stone Fashion & Machine Stone Designs. Premium fashion stone design company in Abiola Way, behind Laroy Hotel." />
+  <meta name="keywords" content="fashion stone, machine stone, luxury dress, stone design, OMOcreation, stone fashion" />
+  <meta name="author" content="O.M.Ocreation" />
+  <title>O.M.Ocreation - Luxury Stone Fashion</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* ============================================
+       O.M.Ocreation - Complete Stylesheet
+       Single Page Version
+       ============================================ */
+    
+    /* ----- GLOBAL VARIABLES ----- */
+    :root {
+      --primary-pink: #ff4da6;
+      --primary-pink-dark: #e6398c;
+      --primary-pink-light: #ff85c1;
+      --primary-pink-soft: #ffd6e7;
+      --white: #ffffff;
+      --black: #2b2b2b;
+      --gray-light: #f8f9fa;
+      --gray: #6c757d;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+      --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    
+    /* ----- TYPOGRAPHY ----- */
+    h1, h2, h3 {
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+    }
+    
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--primary-pink);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-pink), var(--primary-pink-light));
+      border-radius: 3px;
+    }
+    
+    /* ----- CONTAINER ----- */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .section {
+      padding: 80px 20px;
+    }
+    
+    .section-sm {
+      padding: 50px 20px;
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    
+    /* ----- BUTTONS ----- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition-normal);
+      cursor: pointer;
+      border: none;
+      gap: 8px;
+    }
+    
+    .btn-primary {
+      background: var(--primary-pink);
+      color: var(--white);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .btn-primary:hover {
+      background: var(--primary-pink-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      color: var(--primary-pink);
+      border: 2px solid var(--primary-pink);
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary-pink);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+    
+    /* ----- NAVIGATION ----- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-sm);
+      z-index: 1000;
+      padding: 15px 0;
+      transition: var(--transition-normal);
+    }
+    
+    .navbar.scrolled {
+      padding: 10px 0;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary-pink);
+      text-decoration: none;
+    }
+    
+    .logo span {
+      color: var(--black);
+    }
+    
+    .nav-menu {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+    
+    .nav-link {
+      text-decoration: none;
+      color: var(--black);
+      font-weight: 500;
+      transition: var(--transition-fast);
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-pink);
+      transition: var(--transition-fast);
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .nav-link:hover {
+      color: var(--primary-pink);
+    }
+    
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: var(--black);
+      transition: var(--transition-fast);
+    }
+    
+    /* Mobile Menu */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+      
+      .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--white);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        transition: var(--transition-normal);
+      }
+      
+      .nav-menu.active {
+        left: 0;
+      }
+    }
+    
+    /* ----- HERO SECTION ----- */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--primary-pink), var(--primary-pink-light), var(--primary-pink-soft));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 20px;
+    }
+    
+    .hero h1 {
+      color: var(--white);
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease;
+    }
+    
+    .hero p {
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+    
+    .hero .btn {
+      animation: fadeInUp 1s ease 0.4s both;
+    }
+    
+    /* ----- ABOUT SECTION ----- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      margin-top: 50px;
+    }
+    
+    .about-content p {
+      margin-bottom: 20px;
+      color: var(--gray);
+    }
+    
+    .about-image {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: var(--transition-normal);
+    }
+    
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* ----- GALLERY PREVIEW ----- */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 50px;
+    }
+    
+    .gallery-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-normal);
+      cursor: pointer;
+    }
+    
+    .gallery-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .gallery-image {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: var(--transition-normal);
+    }
+    
+    .gallery-card:hover .gallery-image {
+      transform: scale(1.05);
+    }
+    
+    .gallery-info {
+      padding: 20px;
+    }
+    
+    .gallery-info h3 {
+      margin-bottom: 10px;
+      color: var(--primary-pink);
+    }
+    
+    .gallery-info p {
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+    
+    /* ----- SERVICES SECTION ----- */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .service-card {
+      background: var(--white);
+      padding: 40px 20px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition-normal);
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .service-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .service-card h3 {
+      margin-bottom: 15px;
+      color: var(--primary-pink);
+    }
+    
+    .service-card p {
+      color: var(--gray);
+    }
+    
+    /* ----- CONTACT SECTION ----- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      margin-top: 50px;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+    
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 20px;
+      background: var(--gray-light);
+      border-radius: 15px;
+      transition: var(--transition-normal);
+    }
+    
+    .info-item:hover {
+      transform: translateX(10px);
+      background: var(--primary-pink-soft);
+    }
+    
+    .info-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--primary-pink);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--white);
+    }
+    
+    .info-content h4 {
+      margin-bottom: 5px;
+    }
+    
+    .info-content p,
+    .info-content a {
+      color: var(--gray);
+      text-decoration: none;
+    }
+    
+    .info-content a:hover {
+      color: var(--primary-pink);
+    }
+    
+    /* Google Maps */
+    .map-container {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      height: 100%;
+      min-height: 350px;
+    }
+    
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 350px;
+      border: 0;
+    }
+    
+    /* Social Links */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .social-link {
+      width: 50px;
+      height: 50px;
+      background: var(--primary-pink);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      text-decoration: none;
+      transition: var(--transition-normal);
+      font-size: 1.3rem;
+    }
+    
+    .social-link:hover {
+      transform: translateY(-3px);
+      background: var(--primary-pink-dark);
+    }
+    
+    /* ----- FOOTER ----- */
+    .footer {
+      background: linear-gradient(135deg, var(--primary-pink), var(--primary-pink-dark));
+      color: var(--white);
+      padding: 50px 20px 20px;
+      text-align: center;
+    }
+    
+    .footer p {
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .footer-bottom {
+      padding-top: 30px;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* ----- BACK TO TOP ----- */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 45px;
+      height: 45px;
+      background: var(--primary-pink);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-normal);
+      z-index: 999;
+    }
+    
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background: var(--primary-pink-dark);
+      transform: translateY(-3px);
+    }
+    
+    /* ----- ANIMATIONS ----- */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* ----- RESPONSIVE ----- */
+    @media (max-width: 992px) {
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      
+      .map-container {
+        min-height: 300px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .section {
+        padding: 50px 20px;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+      
+      .info-item {
+        padding: 15px;
+      }
+      
+      .info-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#" class="logo">O.M.O<span>creation</span></a>
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#gallery" class="nav-link">Gallery</a></li>
+      <li><a href="#services" class="nav-link">Services</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>O.M.Ocreation</h1>
+    <p>Luxury Stone Fashion & Machine Stone Designs. Where elegance meets craftsmanship in every detail.</p>
+    <a href="#gallery" class="btn btn-white">Explore Our Work <i class="fas fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="text-center">
+      <h2>About Us</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-content">
+        <p><strong>O.M.Ocreation</strong> is a premium fashion stone design company located at <strong>Abiola Way, behind Laroy Hotel</strong>. We specialize in high-quality stone dress designs and machine stone artistry, blending creativity with luxury.</p>
+        <p>Our mission is to bring elegance, beauty, and uniqueness to every fabric we touch. With years of experience and a passion for perfection, we create masterpieces that stand out for weddings, parties, and special events.</p>
+        <p>Every piece is crafted with attention to detail, using only the finest stones and materials. We believe that fashion is art, and we are here to make you the masterpiece.</p>
+      </div>
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1520975922284-9b2f8b4d6b7a" alt="Luxury fashion stone design">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Preview Section -->
+<section class="section" style="background: var(--gray-light);" id="gallery">
+  <div class="container">
+    <div class="text-center">
+      <h2>Our Designs</h2>
+      <p style="margin-top: 15px; color: var(--gray);">Browse our latest stone fashion creations</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1520975922284-9b2f8b4d6b7a" alt="Luxury Stone Dress" class="gallery-image">
+        <div class="gallery-info">
+          <h3>Luxury Stone Dress</h3>
+          <p>Elegant evening gown with hand-placed crystals for that red carpet look.</p>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1521335629791-ce4aec67dd49" alt="Machine Stone Craft" class="gallery-image">
+        <div class="gallery-info">
+          <h3>Machine Stone Craft</h3>
+          <p>Precision-cut stone patterns for modern, minimalist elegance.</p>
+        </div>
+      </div>
+      <div class="gallery-card">
+        <img src="https://images.unsplash.com/photo-1520975682031-ae7c0b3a0d6c" alt="Elegant Fashion Stones" class="gallery-image">
+        <div class="gallery-info">
+          <h3>Elegant Fashion Stones</h3>
+          <p>Delicate stone work that transforms casual wear into statement pieces.</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center" style="margin-top: 40px;">
+      <a href="#" class="btn btn-primary" id="viewMoreBtn">View Full Gallery <i class="fas fa-images"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="text-center">
+      <h2>Our Services</h2>
+      <p style="margin-top: 15px; color: var(--gray);">What we offer to make you look stunning</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">💎</div>
+        <h3>Luxury Stone Dresses</h3>
+        <p>Exquisite stone embellishments for special occasions, weddings, and red carpet events.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <h3>Machine Stone Art</h3>
+        <p>Precision machine stone work for modern, elegant, and contemporary designs.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <h3>Custom Design</h3>
+        <p>Personalized stone patterns tailored to your unique style and preferences.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">👗</div>
+        <h3>Fashion Consultation</h3>
+        <p>Expert advice on stone placement, color matching, and design harmony.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section" style="background: var(--gray-light);" id="contact">
+  <div class="container">
+    <div class="text-center">
+      <h2>Contact Us</h2>
+      <p style="margin-top: 15px; color: var(--gray);">Get in touch with us for inquiries and orders</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-location-dot"></i></div>
+          <div class="info-content">
+            <h4>Visit Us</h4>
+            <p>Abiola Way, Behind Laroy Hotel, Abeokuta, Ogun State, Nigeria</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-phone"></i></div>
+          <div class="info-content">
+            <h4>Call Us</h4>
+            <p><a href="tel:+234XXX XXX XXXX">+234 XXX XXX XXXX</a></p>
+            <p><a href="tel:+234XXX XXX XXXX">+234 XXX XXX XXXX</a></p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-envelope"></i></div>
+          <div class="info-content">
+            <h4>Email Us</h4>
+            <p><a href="mailto:info@omocreation.com">info@omocreation.com</a></p>
+            <p><a href="mailto:orders@omocreation.com">orders@omocreation.com</a></p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-clock"></i></div>
+          <div class="info-content">
+            <h4>Working Hours</h4>
+            <p>Monday - Saturday: 9:00 AM - 6:00 PM</p>
+            <p>Sunday: Closed</p>
+          </div>
+        </div>
+      </div>
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1x3959.123456789!2x3.456789!3x7.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMDcnMjQuNiJOIDPCsDI3JzQ1LjIiRQ!5e0!3m2!1sen!2sng!4v1234567890123!5m2!1sen!2sng" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+    
+    <!-- Social Links -->
+    <div class="social-links">
+      <a href="#" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="social-link" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 O.M.Ocreation. All Rights Reserved. | Luxury Stone Fashion & Machine Stone Designs</p>
+    <div class="footer-bottom">
+      <p>📍 Abiola Way, Behind Laroy Hotel | 📞 +234 XXX XXX XXXX</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top Button -->
+<a href="#" class="back-to-top" id="backToTop">
+  <i class="fas fa-arrow-up"></i>
+</a>
+
+<script>
+  // ============================================
+  // O.M.Ocreation - Main JavaScript
+  // Single Page Version
+  // ============================================
+  
+  (function() {
+    
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+      });
+      
+      // Close menu when clicking a link
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+        });
+      });
+    }
+    
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+    }
+    
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+          backToTop.classList.add('show');
+        } else {
+          backToTop.classList.remove('show');
+        }
+      });
+      
+      backToTop.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+    
+    // View More Gallery button (you can replace with actual gallery page later)
+    const viewMoreBtn = document.getElementById('viewMoreBtn');
+    if (viewMoreBtn) {
+      viewMoreBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('Full gallery coming soon! Check back later for more stunning designs.');
+      });
+    }
+    
+    // Fade in elements on scroll
+    const fadeElements = document.querySelectorAll('.gallery-card, .service-card, .about-grid, .info-item');
+    
+    const fadeInOnScroll = function() {
+      fadeElements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight;
+        
+        if (elementPosition < screenPosition - 50) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    };
+    
+    // Set initial styles for fade elements
+    fadeElements.forEach(element => {
+      element.style.opacity = '0';
+      element.style.transform = 'translateY(30px)';
+      element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    window.addEventListener('scroll', fadeInOnScroll);
+    fadeInOnScroll(); // Trigger once on load
+    
+  })();
+</script>
+
+</body>
+</html>
