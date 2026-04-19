@@ -31,12 +31,11 @@
       --gold: #d4af37;
     }
     
-    /* Custom Scrollbar */
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: var(--pink-soft); }
     ::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 10px; }
     
-    /* Floating Particles Background */
+    /* Floating Particles */
     .particles {
       position: fixed;
       top: 0;
@@ -60,13 +59,6 @@
       25% { transform: translateY(-50px) translateX(30px); }
       50% { transform: translateY(30px) translateX(-20px); }
       75% { transform: translateY(-30px) translateX(40px); }
-    }
-    
-    /* Glass Morphism Effect */
-    .glass {
-      background: rgba(255,255,255,0.9);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.2);
     }
     
     /* NAVIGATION */
@@ -106,9 +98,9 @@
     }
     
     .logo img {
-      height: 40px;
+      height: 50px;
       width: auto;
-      max-width: 150px;
+      max-width: 180px;
       object-fit: contain;
     }
     
@@ -214,6 +206,12 @@
         background: var(--pink);
         transform: rotate(90deg);
       }
+      
+      /* Hide hamburger when menu is open */
+      .hamburger.active {
+        opacity: 0;
+        visibility: hidden;
+      }
     }
     
     /* HERO SLIDER */
@@ -232,6 +230,7 @@
       height: 100%;
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
       opacity: 0;
       transition: opacity 0.8s ease-in-out;
       z-index: 1;
@@ -317,7 +316,7 @@
       border-radius: 10px;
     }
     
-    /* DIVIDER IMAGE - NEW SECTION AFTER HERO */
+    /* DIVIDER IMAGE */
     .divider-section {
       padding: 60px 5%;
       text-align: center;
@@ -589,7 +588,7 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     }
     
-    /* SOCIAL SECTION - 2x2 GRID */
+    /* SOCIAL - 2x2 GRID */
     .social-section {
       margin-top: 50px;
       text-align: center;
@@ -837,10 +836,11 @@
       .footer-col h4::after { left: 50%; transform: translateX(-50%); }
       .footer-social { justify-content: center; }
       .divider-section { padding: 40px 20px; }
+      .logo img { height: 40px; }
     }
     
     @media (max-width: 480px) {
-      .logo img { height: 32px; }
+      .logo img { height: 35px; }
       .logo span { font-size: 1rem; }
       .slider-btn { width: 32px; height: 32px; font-size: 0.8rem; }
       .social-card { padding: 10px 15px; }
@@ -851,14 +851,14 @@
 </head>
 <body>
 
-<!-- Floating Particles Background -->
+<!-- Floating Particles -->
 <div class="particles" id="particles"></div>
 
 <!-- NAVIGATION -->
 <nav class="navbar" id="navbar">
   <div class="nav-container">
     <a href="#" class="logo">
-      <img src="assets/images/log1.jpg" alt="O.M.Ocreation" id="logoImg">
+      <img src="assets/images/log1" alt="O.M.Ocreation Logo" id="logoImg">
       <span>O.M.O</span><span>creation</span>
     </a>
     
@@ -881,9 +881,9 @@
   </div>
 </nav>
 
-<!-- HERO SLIDER -->
+<!-- HERO SLIDER - NO EXTENSIONS -->
 <section class="hero" id="home">
-  <div class="slide active" style="background-image: url('assets/images/p1.jpg');">
+  <div class="slide active" style="background-image: url('assets/images/p1');">
     <div class="slide-overlay"></div>
     <div class="slide-content">
       <h1>Luxury Stone Fashion</h1>
@@ -891,7 +891,7 @@
       <a href="#gallery" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Shop Now</a>
     </div>
   </div>
-  <div class="slide" style="background-image: url('assets/images/p2.jpg');">
+  <div class="slide" style="background-image: url('assets/images/p2');">
     <div class="slide-overlay"></div>
     <div class="slide-content">
       <h1>Original Rhinestones</h1>
@@ -899,7 +899,7 @@
       <a href="https://wa.me/2348077340294" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Order Now</a>
     </div>
   </div>
-  <div class="slide" style="background-image: url('assets/images/p3.jpg');">
+  <div class="slide" style="background-image: url('assets/images/p3');">
     <div class="slide-overlay"></div>
     <div class="slide-content">
       <h1>Beads & Bridal Materials</h1>
@@ -907,7 +907,7 @@
       <a href="#contact" class="btn btn-primary"><i class="fas fa-phone"></i> Contact Us</a>
     </div>
   </div>
-  <div class="slide" style="background-image: url('assets/images/p4.jpg');">
+  <div class="slide" style="background-image: url('assets/images/p4');">
     <div class="slide-overlay"></div>
     <div class="slide-content">
       <h1>Paperstones</h1>
@@ -915,7 +915,7 @@
       <a href="https://wa.me/2348077340294" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Inquire Now</a>
     </div>
   </div>
-  <div class="slide" style="background-image: url('assets/images/p5.jpg');">
+  <div class="slide" style="background-image: url('assets/images/p5');">
     <div class="slide-overlay"></div>
     <div class="slide-content">
       <h1>Training Available</h1>
@@ -923,7 +923,7 @@
       <a href="#contact" class="btn btn-primary"><i class="fas fa-graduation-cap"></i> Enroll Now</a>
     </div>
   </div>
-  <div class="slide" style="background-image: url('assets/images/p6.jpg');">
+  <div class="slide" style="background-image: url('assets/images/p6');">
     <div class="slide-overlay"></div>
     <div class="slide-content">
       <h1>O.M.Ocreation</h1>
@@ -937,9 +937,9 @@
   <div class="slider-dots" id="sliderDots"></div>
 </section>
 
-<!-- DIVIDER IMAGE SECTION (NEW - Between Hero and About) -->
+<!-- DIVIDER IMAGE - NO EXTENSION -->
 <div class="divider-section">
-  <img src="assets/images/pp2.jpg" alt="O.M.Ocreation Featured Design" class="divider-image" style="width: 100%; max-width: 900px;">
+  <img src="assets/images/pp2" alt="O.M.Ocreation Featured Design" class="divider-image" style="width: 100%; max-width: 900px;">
 </div>
 
 <!-- ABOUT SECTION -->
@@ -955,7 +955,7 @@
       <p>With years of experience and a passion for perfection, we create masterpieces that stand out for weddings, parties, and special events.</p>
     </div>
     <div class="about-image">
-      <img src="assets/images/pp1.jpg" alt="O.M.Ocreation fashion stone design">
+      <img src="assets/images/pp1" alt="O.M.Ocreation fashion stone design">
     </div>
   </div>
 </section>
@@ -991,49 +991,49 @@
   </div>
 </section>
 
-<!-- GALLERY / CATALOG -->
+<!-- GALLERY / CATALOG - NO EXTENSIONS -->
 <section class="section" id="gallery">
   <h2 class="section-title">Our <span>Catalog</span></h2>
   <p class="section-subtitle">Browse our stunning stone fashion creations</p>
   
   <div class="gallery-grid">
     <div class="gallery-item">
-      <img src="assets/images/pp1.jpg" alt="Luxury Stone Design">
+      <img src="assets/images/pp1" alt="Luxury Stone Design">
       <div class="gallery-info">
         <h3>Luxury Stone Dress</h3>
         <p>Elegant evening gown with hand-placed crystals</p>
       </div>
     </div>
     <div class="gallery-item">
-      <img src="assets/images/pp2.jpg" alt="Rhinestone Design">
+      <img src="assets/images/pp2" alt="Rhinestone Design">
       <div class="gallery-info">
         <h3>Rhinestone Craft</h3>
         <p>Precision-cut rhinestone patterns</p>
       </div>
     </div>
     <div class="gallery-item">
-      <img src="assets/images/pp3.jpg" alt="Bridal Stone Work">
+      <img src="assets/images/pp3" alt="Bridal Stone Work">
       <div class="gallery-info">
         <h3>Bridal Collection</h3>
         <p>Wedding stone embellishments</p>
       </div>
     </div>
     <div class="gallery-item">
-      <img src="assets/images/pp4.jpg" alt="Paperstone Design">
+      <img src="assets/images/pp4" alt="Paperstone Design">
       <div class="gallery-info">
         <h3>Paperstone Art</h3>
         <p>Creative paperstone designs</p>
       </div>
     </div>
     <div class="gallery-item">
-      <img src="assets/images/pp5.jpg" alt="Beads Collection">
+      <img src="assets/images/pp5" alt="Beads Collection">
       <div class="gallery-info">
         <h3>Beads Collection</h3>
         <p>Premium beads for fashion</p>
       </div>
     </div>
     <div class="gallery-item">
-      <img src="assets/images/pp6.jpg" alt="Bridal Materials">
+      <img src="assets/images/pp6" alt="Bridal Materials">
       <div class="gallery-info">
         <h3>Bridal Materials</h3>
         <p>Complete bridal stone collection</p>
@@ -1208,9 +1208,7 @@
 </a>
 
 <script>
-  // ============================================
-  // FLOATING PARTICLES
-  // ============================================
+  // Floating Particles
   function createParticles() {
     const container = document.getElementById('particles');
     if (!container) return;
@@ -1230,9 +1228,7 @@
   }
   createParticles();
   
-  // ============================================
-  // IMAGE SLIDER
-  // ============================================
+  // Image Slider
   const slides = document.querySelectorAll('.slide');
   const prevBtn = document.getElementById('prevSlide');
   const nextBtn = document.getElementById('nextSlide');
@@ -1275,9 +1271,7 @@
   
   startAutoSlide();
   
-  // ============================================
-  // MOBILE MENU - Hamburger ↔ X
-  // ============================================
+  // Mobile Menu - Hamburger hides when open
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('navMenu');
   const closeMenu = document.getElementById('closeMenu');
@@ -1301,9 +1295,7 @@
     link.addEventListener('click', closeMenuFunc);
   });
   
-  // ============================================
-  // NAVBAR SCROLL EFFECT
-  // ============================================
+  // Navbar scroll effect
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
@@ -1313,9 +1305,7 @@
     }
   });
   
-  // ============================================
-  // BACK TO TOP
-  // ============================================
+  // Back to top
   const backToTop = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {
@@ -1332,9 +1322,7 @@
     });
   }
   
-  // ============================================
-  // SMOOTH SCROLL
-  // ============================================
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
@@ -1348,9 +1336,7 @@
     });
   });
   
-  // ============================================
-  // NEWSLETTER FORM
-  // ============================================
+  // Newsletter
   const newsletterForm = document.getElementById('newsletterForm');
   if (newsletterForm) {
     newsletterForm.addEventListener('submit', (e) => {
@@ -1361,9 +1347,7 @@
     });
   }
   
-  // ============================================
-  // LOGO FALLBACK
-  // ============================================
+  // Logo fallback
   const logoImg = document.getElementById('logoImg');
   if (logoImg) {
     logoImg.onerror = function() {
@@ -1371,10 +1355,8 @@
     };
   }
   
-  // ============================================
-  // SCROLL ANIMATIONS
-  // ============================================
-  const animateElements = document.querySelectorAll('.service-card, .gallery-item, .info-card, .highlight-card');
+  // Scroll animations
+  const animateElements = document.querySelectorAll('.service-card, .gallery-item, .info-card');
   
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1393,8 +1375,6 @@
   });
   
   console.log('%c✨ O.M.Ocreation - Luxury Stone Fashion ✨', 'color: #ff4da6; font-size: 16px; font-weight: bold;');
-  console.log('%cWe sell Original Rhinestones in Abeokuta, Ogun State, Nigeria', 'color: #ff85c1; font-size: 12px;');
-  console.log('%cContact us for Paperstone Training!', 'color: #d4af37; font-size: 12px;');
 </script>
 
 </body>
