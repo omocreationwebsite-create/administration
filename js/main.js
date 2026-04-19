@@ -18,16 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // ============================================
-  // AOS INITIALIZATION (Scroll Animations)
-  // ============================================
-  AOS.init({
-    duration: 800,
-    once: true,
-    offset: 100,
-    easing: 'ease-out'
-  });
-  
-  // ============================================
   // MOBILE MENU TOGGLE
   // ============================================
   const menuToggle = document.getElementById('menuToggle');
@@ -36,14 +26,12 @@ document.addEventListener('DOMContentLoaded', function() {
   if (menuToggle && navMenu) {
     menuToggle.addEventListener('click', function() {
       navMenu.classList.toggle('active');
-      menuToggle.classList.toggle('active');
     });
     
     // Close menu when clicking a link
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
-        menuToggle.classList.remove('active');
       });
     });
   }
@@ -98,57 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // ============================================
-  // PARTICLES BACKGROUND FOR HERO
-  // ============================================
-  function createParticles() {
-    const particlesContainer = document.getElementById('particles');
-    if (!particlesContainer) return;
-    
-    const particleCount = 50;
-    
-    for (let i = 0; i < particleCount; i++) {
-      const particle = document.createElement('div');
-      particle.classList.add('particle');
-      particle.style.cssText = `
-        position: absolute;
-        width: ${Math.random() * 6 + 2}px;
-        height: ${Math.random() * 6 + 2}px;
-        background: rgba(255, 255, 255, ${Math.random() * 0.5 + 0.2});
-        border-radius: 50%;
-        top: ${Math.random() * 100}%;
-        left: ${Math.random() * 100}%;
-        animation: floatParticle ${Math.random() * 10 + 5}s linear infinite;
-        animation-delay: ${Math.random() * 5}s;
-      `;
-      particlesContainer.appendChild(particle);
-    }
-  }
-  
-  // Add particle animation keyframes dynamically
-  const styleSheet = document.createElement('style');
-  styleSheet.textContent = `
-    @keyframes floatParticle {
-      0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) translateX(${Math.random() * 100 - 50}px);
-        opacity: 0;
-      }
-    }
-  `;
-  document.head.appendChild(styleSheet);
-  
-  createParticles();
-  
-  // ============================================
   // NEWSLETTER FORM SUBMISSION
   // ============================================
   const newsletterForm = document.getElementById('newsletterForm');
@@ -158,7 +95,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const email = this.querySelector('input[type="email"]').value;
       
       if (email) {
-        // Store in localStorage or send to your backend
         alert(`Thank you for subscribing! We'll send updates to ${email}`);
         this.reset();
       }
@@ -174,26 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (linkHref === currentPage) {
       link.classList.add('active');
     }
-  });
-  
-  // ============================================
-  // IMAGE LAZY LOADING
-  // ============================================
-  const images = document.querySelectorAll('img');
-  const imageObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.style.opacity = '1';
-        observer.unobserve(img);
-      }
-    });
-  });
-  
-  images.forEach(img => {
-    img.style.opacity = '0';
-    img.style.transition = 'opacity 0.5s ease';
-    imageObserver.observe(img);
   });
   
   // ============================================
@@ -236,32 +152,31 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // ============================================
-  // PARALLAX EFFECT ON SCROLL
+  // SCROLL ANIMATION FOR ELEMENTS
   // ============================================
-  window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-      hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
+  const animateElements = document.querySelectorAll('.service-card, .gallery-item, .info-card, .social-card');
+  
+  const fadeInOnScroll = function() {
+    animateElements.forEach(element => {
+      const elementPosition = element.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight;
+      
+      if (elementPosition < screenPosition - 50) {
+        element.style.opacity = '1';
+        element.style.transform = 'translateY(0)';
+      }
+    });
+  };
+  
+  // Set initial styles for animation elements
+  animateElements.forEach(element => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(30px)';
+    element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
   });
   
-  // ============================================
-  // WHATSAPP FLOATING BUTTON TOOLTIP
-  // ============================================
-  const whatsappFloat = document.getElementById('whatsappFloat');
-  if (whatsappFloat) {
-    let tooltipTimeout;
-    whatsappFloat.addEventListener('mouseenter', () => {
-      clearTimeout(tooltipTimeout);
-    });
-    whatsappFloat.addEventListener('mouseleave', () => {
-      tooltipTimeout = setTimeout(() => {
-        const tooltip = document.querySelector('.whatsapp-tooltip');
-        if (tooltip) tooltip.style.opacity = '0';
-      }, 100);
-    });
-  }
+  window.addEventListener('scroll', fadeInOnScroll);
+  fadeInOnScroll(); // Trigger once on load
   
   // ============================================
   // PREVENT DOUBLE SUBMISSION
@@ -272,20 +187,15 @@ document.addEventListener('DOMContentLoaded', function() {
       const submitBtn = this.querySelector('button[type="submit"]');
       if (submitBtn) {
         submitBtn.disabled = true;
+        const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
         
         setTimeout(() => {
           submitBtn.disabled = false;
-          submitBtn.innerHTML = submitBtn.getAttribute('data-original-text') || 'Subscribe <i class="fas fa-paper-plane"></i>';
+          submitBtn.innerHTML = originalText;
         }, 3000);
       }
     });
-    
-    // Store original button text
-    const submitBtn = form.querySelector('button[type="submit"]');
-    if (submitBtn && !submitBtn.getAttribute('data-original-text')) {
-      submitBtn.setAttribute('data-original-text', submitBtn.innerHTML);
-    }
   });
   
   // ============================================
